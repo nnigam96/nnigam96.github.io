@@ -3,56 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Nikhil Nigam - Machine Learning Engineer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <img src="assets/profile.jpg" alt="Profile Picture">
-        <h1>Your Name</h1>
-        <p>Software Developer | Machine Learning Enthusiast</p>
+        <div class="header-content">
+            <h1>Nikhil Nigam</h1>
+            <p class="title">Machine Learning Engineer</p>
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +1 (608)-960-6420</span>
+                <span><i class="fas fa-envelope"></i> nnigam@wisc.edu</span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/nikhil-nigam-31131b12a" target="_blank">linkedin.com/in/nikhil-nigam-31131b12a</a></span>
+                <span><i class="fab fa-github"></i> <a href="https://github.com/nnigam96" target="_blank">github.com/nnigam96</a></span>
+            </div>
+        </div>
     </header>
-    
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>A short professional introduction about your experience, expertise, and interests in coding, ML, and technology.</p>
+            <p>Machine Learning Engineer with 5+ years of experience in AI and Software Engineering, with a proven track record building scalable ML infrastructure, developing innovative models, and optimizing systems for efficiency.</p>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-
-            <div class="project">
-                <h3>Project Title 1</h3>
-                <p>Brief project description highlighting tech stack, ML techniques, and outcomes.</p>
-                <a href="https://github.com/<username>/<repo>" target="_blank">View on GitHub</a>
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>ML Frameworks & Tools</h3>
+                    <ul>
+                        <li>PyTorch, Lightning</li>
+                        <li>FastMCP, LangChain</li>
+                        <li>Milvus, MLflow</li>
+                        <li>Weights & Biases</li>
+                        <li>TensorFlow, Keras</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Deployment & Cloud</h3>
+                    <ul>
+                        <li>Flask, Docker</li>
+                        <li>AWS (boto3, EC2, S3, EFS, Cognito)</li>
+                        <li>Linux, Git</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="project">
-                <h3>Project Title 2</h3>
-                <p>Brief project description highlighting tech stack, ML techniques, and outcomes.</p>
-                <a href="https://github.com/<username>/<repo>" target="_blank">View on GitHub</a>
-            </div>
-
-            <!-- Add more project divs as needed -->
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p><a href="https://github.com/<username>" target="_blank">GitHub Profile</a></p>
-            <p><a href="https://linkedin.com/in/<username>" target="_blank">LinkedIn Profile</a></p>
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>modlee Inc</h3>
+                <p class="position">Machine Learning Research Engineer</p>
+                <p class="duration">Sept 2023 - Present</p>
+                <ul>
+                    <li>Orchestrated the E2E development and deployment of a vector database driven recommendation system, expanding Modlee's experiment catalog by 5x</li>
+                    <li>Developed a schema-driven Data Aggregator Agent using LLMs for structured SQL database creation</li>
+                    <li>Led the design of enterprise-focused private Modlee solutions for secure ML experimentation</li>
+                    <li>Devised and implemented a scalable AI driven data annotation scheme accelerating development by 20x</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>InterDigital Inc</h3>
+                <p class="position">Emerging Technologies Lab - Deep Learning Research Intern</p>
+                <p class="duration">May 2022 - Aug 2022</p>
+                <ul>
+                    <li>Developed a compression algorithm reducing bandwidth consumption by 40%</li>
+                    <li>Integrated Convoluted block Attention mechanisms improving reconstruction quality by 10%</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Vodafone Intelligent Services</h3>
+                <p class="position">Software Engineer</p>
+                <p class="duration">Jul 2018 - Jul 2021</p>
+                <ul>
+                    <li>Subject Matter Expert of FinX, an in-house expense management tool</li>
+                    <li>Spearheaded E2E Design and Development of Delegation of Authority API</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>University of Wisconsin - Madison</h3>
+                <p>M.S in ECE, Specialization: Machine Learning</p>
+                <p>GPA: 3.6/4.0 | May 2023</p>
+            </div>
+            <div class="education-item">
+                <h3>Maharashtra Institute of Technology - Pune</h3>
+                <p>B.Engg. in Electronics & Telecommunication</p>
+                <p>Grade: A | May 2018</p>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Specialization in Natural Language Processing (Deep Learning.ai) - Jul 2023</li>
+                <li>Advanced Computer Vision (Deep Learning.ai) - Jul 2023</li>
+            </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Nikhil Nigam. All rights reserved.</p>
     </footer>
 </body>
 </html>
