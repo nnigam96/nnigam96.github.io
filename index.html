@@ -4,120 +4,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikhil Nigam - Machine Learning Engineer</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+            <li>
+                <a href="#education">Education</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </header>
+    <!-- End header -->
+
+    <div id="lead">
+        <div id="lead-content">
             <h1>Nikhil Nigam</h1>
-            <p class="title">Machine Learning Engineer</p>
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +1 (608)-960-6420</span>
-                <span><i class="fas fa-envelope"></i> nnigam@wisc.edu</span>
-                <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/nikhil-nigam-31131b12a" target="_blank">linkedin.com/in/nikhil-nigam-31131b12a</a></span>
-                <span><i class="fab fa-github"></i> <a href="https://github.com/nnigam96" target="_blank">github.com/nnigam96</a></span>
+            <h2>Machine Learning Engineer</h2>
+            <a href="#" class="btn-rounded-white">Download Resume</a>
+        </div>
+        <!-- End #lead-content -->
+
+        <div id="lead-overlay"></div>
+
+        <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- End #lead-down -->
+    </div>
+    <!-- End #lead -->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="heading">About Me</h2>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Machine Learning Engineer with 5+ years of experience in AI and Software Engineering, with a proven track record building scalable ML infrastructure, developing innovative models, and optimizing systems for efficiency.
+                    </p>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+    <!-- End #about -->
 
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Machine Learning Engineer with 5+ years of experience in AI and Software Engineering, with a proven track record building scalable ML infrastructure, developing innovative models, and optimizing systems for efficiency.</p>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>ML Frameworks & Tools</h3>
-                    <ul>
-                        <li>PyTorch, Lightning</li>
-                        <li>FastMCP, LangChain</li>
-                        <li>Milvus, MLflow</li>
-                        <li>Weights & Biases</li>
-                        <li>TensorFlow, Keras</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Deployment & Cloud</h3>
-                    <ul>
-                        <li>Flask, Docker</li>
-                        <li>AWS (boto3, EC2, S3, EFS, Cognito)</li>
-                        <li>Linux, Git</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>SQL</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Work Experience</h2>
-            <div class="experience-item">
+    <div id="experience" class="background-alt">
+        <h2 class="heading">Experience</h2>
+        <div id="experience-timeline">
+            <div data-date="September 2023 – Present">
                 <h3>modlee Inc</h3>
-                <p class="position">Machine Learning Research Engineer</p>
-                <p class="duration">Sept 2023 - Present</p>
-                <ul>
-                    <li>Orchestrated the E2E development and deployment of a vector database driven recommendation system, expanding Modlee's experiment catalog by 5x</li>
-                    <li>Developed a schema-driven Data Aggregator Agent using LLMs for structured SQL database creation</li>
-                    <li>Led the design of enterprise-focused private Modlee solutions for secure ML experimentation</li>
-                    <li>Devised and implemented a scalable AI driven data annotation scheme accelerating development by 20x</li>
-                </ul>
+                <h4>Machine Learning Research Engineer</h4>
+                <p>
+                    Orchestrated the E2E development and deployment of a vector database driven recommendation system, expanding Modlee's experiment catalog by 5x, significantly enhancing model recommendation capabilities.
+                    Developed a schema-driven Data Aggregator Agent that leverages LLMs to transform unstructured text into structured SQL databases.
+                    Led the design of enterprise-focused private Modlee solutions, extending core infrastructure for secure ML experimentation.
+                </p>
             </div>
 
-            <div class="experience-item">
+            <div data-date="May 2022 – August 2022">
                 <h3>InterDigital Inc</h3>
-                <p class="position">Emerging Technologies Lab - Deep Learning Research Intern</p>
-                <p class="duration">May 2022 - Aug 2022</p>
-                <ul>
-                    <li>Developed a compression algorithm reducing bandwidth consumption by 40%</li>
-                    <li>Integrated Convoluted block Attention mechanisms improving reconstruction quality by 10%</li>
-                </ul>
+                <h4>Emerging Technologies Lab - Deep Learning Research Intern</h4>
+                <p>
+                    Developed a compression algorithm for wireless communication signals which reduced bandwidth consumption by 40% while compared to SOTA Channel State Information compression models.
+                    Integrated Convoluted block Attention mechanisms to a Fully Convoluted Autoencoder to improve reconstruction quality by 10%.
+                </p>
             </div>
 
-            <div class="experience-item">
+            <div data-date="July 2018 – July 2021">
                 <h3>Vodafone Intelligent Services</h3>
-                <p class="position">Software Engineer</p>
-                <p class="duration">Jul 2018 - Jul 2021</p>
-                <ul>
-                    <li>Subject Matter Expert of FinX, an in-house expense management tool</li>
-                    <li>Spearheaded E2E Design and Development of Delegation of Authority API</li>
-                </ul>
+                <h4>Software Engineer</h4>
+                <p>
+                    Designated Subject Matter Expert of FinX, an in-house tool that automated all expense management and cost benefit analysis in Vodafone Group PLC.
+                    Spearheaded E2E Design and Development of Delegation of Authority API in FinX within the Agile CICD SDLC pipeline.
+                </p>
             </div>
-        </section>
+        </div>
+    </div>
+    <!-- End #experience -->
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>University of Wisconsin - Madison</h3>
-                <p>M.S in ECE, Specialization: Machine Learning</p>
-                <p>GPA: 3.6/4.0 | May 2023</p>
-            </div>
-            <div class="education-item">
-                <h3>Maharashtra Institute of Technology - Pune</h3>
-                <p>B.Engg. in Electronics & Telecommunication</p>
-                <p>Grade: A | May 2018</p>
-            </div>
-        </section>
+    <div id="education">
+        <h2 class="heading">Education</h2>
+        <div class="education-block">
+            <h3>University of Wisconsin - Madison</h3>
+            <span class="education-date">May 2023</span>
+            <h4>M.S in ECE, Specialization: Machine Learning</h4>
+            <p>GPA: 3.6/4.0</p>
+        </div>
+        <!-- End .education-block -->
 
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <ul>
-                <li>Specialization in Natural Language Processing (Deep Learning.ai) - Jul 2023</li>
-                <li>Advanced Computer Vision (Deep Learning.ai) - Jul 2023</li>
-            </ul>
-        </section>
-    </main>
+        <div class="education-block">
+            <h3>Maharashtra Institute of Technology - Pune</h3>
+            <span class="education-date">May 2018</span>
+            <h4>B.Engg. in Electronics & Telecommunication</h4>
+            <p>Grade: A</p>
+        </div>
+        <!-- End .education-block -->
+    </div>
+    <!-- End #education -->
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading">Projects</h2>
+        <div class="container">
+            <div class="row">
+                <div class="project shadow-large">
+                    <div class="project-info">
+                        <h3>Denoising and Intensity Inhomogeneity Correction of MRIs</h3>
+                        <p>
+                            Adapted N4 Correction with MONAI based UNet via stable diffusion to streamline usage of coils needed for high quality MRIs.
+                            Developed a 3-stage unsupervised set up to denoise MRIs by modifying the noise scheduler within stable diffusion.
+                        </p>
+                        <a href="#">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-info">
+                        <h3>German-English Translator using Transformers</h3>
+                        <p>
+                            Created a user-friendly API using Flask for interacting with a mini GPT model and engaging with the system programmatically.
+                            Packaged the project into two separate pip packages: one for developer files and another for easy interaction with the API.
+                        </p>
+                        <a href="#">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <div id="skills">
+        <h2 class="heading">Skills</h2>
+        <ul>
+            <li>PyTorch</li>
+            <li>Lightning</li>
+            <li>FastMCP</li>
+            <li>LangChain</li>
+            <li>Milvus</li>
+            <li>MLflow</li>
+            <li>Weights & Biases</li>
+            <li>TensorFlow</li>
+            <li>Keras</li>
+            <li>Flask</li>
+            <li>Docker</li>
+            <li>AWS</li>
+            <li>Python</li>
+            <li>SQL</li>
+        </ul>
+    </div>
+    <!-- End #skills -->
+
+    <div id="contact">
+        <h2>Get in Touch</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/nknigam96@gmail.com">
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <!-- End #contact-form -->
+    </div>
+    <!-- End #contact -->
 
     <footer>
-        <p>&copy; 2024 Nikhil Nigam. All rights reserved.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 copyright">
+                    <p>
+                        Copyright &copy; 2024 Nikhil Nigam
+                    </p>
+                </div>
+                <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-sm-5 social">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/nnigam96" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/in/nikhil-nigam-31131b12a" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
+    <!-- End footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
 </body>
 </html>
