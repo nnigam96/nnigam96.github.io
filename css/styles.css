@@ -70,16 +70,36 @@ header a:hover {
 
 /* Lead Section */
 #lead {
-    background: url(../images/lead-bg.jpg);
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    max-height: 1080px;
+    background: url(../images/smooth-green-background.jpg);
     background-size: cover;
+    background-position: center;
     padding: 15px;
     overflow: hidden;
-    border-radius: var(--border-radius);
-    margin: 15px;
 }
 
 #lead-overlay {
-    background: rgba(6, 64, 43, 0.8);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(6, 64, 43, 0.7); /* Semi-transparent green overlay */
+    z-index: 1;
+}
+
+#lead-content {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 /* About Section */
