@@ -223,7 +223,7 @@ header ul#social-menu a:hover {
 #about p {
     max-width: 800px;
     margin: 20px auto;
-    text-align: center;
+    text-align: justify;
 }
 
 /* Experience Section */
