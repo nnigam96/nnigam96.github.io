@@ -6,6 +6,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://nnigam96.github.io',
+  base: '/',
   output: 'static',
   vite: {
     resolve: {
