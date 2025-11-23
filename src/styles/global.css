@@ -10,6 +10,7 @@
 
 html {
   scrollbar-gutter: stable;
+  overflow-x: hidden;
 }
 
 * {
@@ -23,6 +24,7 @@ body {
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -122,7 +124,7 @@ nav {
 }
 
 .hero-left h1 {
-  font-size: clamp(3rem, 4.5vw, 4.5rem);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
   line-height: 1.1;
   margin-bottom: 1rem;
 }
@@ -287,6 +289,8 @@ nav {
   align-items: start;
   cursor: pointer;
   transition: opacity 0.3s;
+  min-height: 60px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-row:last-of-type {
@@ -616,6 +620,10 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+  
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -624,18 +632,29 @@ footer {
   .project-row {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 3rem 0;
+    padding: 2.5rem 0;
+    min-height: 80px;
+  }
+  
+  .project-year {
+    order: 1;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-main {
+    order: 2;
   }
 
   .project-stat {
     align-items: flex-start;
     text-align: left;
-    order: -1;
-    margin-bottom: 1rem;
+    order: 3;
+    margin-top: 1rem;
   }
 
   .stat-number {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .stat-label {
