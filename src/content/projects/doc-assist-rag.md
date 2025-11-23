@@ -5,7 +5,7 @@ description: "Production-ready document Q&A system using local LLMs, FAISS embed
 tags: ["RAG", "FAISS", "Local LLM", "Embeddings", "Information Retrieval"]
 metric_value: "100%"
 metric_label: "Local Inference"
-featured: true
+featured: False
 order: 3
 ---
 

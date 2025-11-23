@@ -3,6 +3,21 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Navbar from '@components/Navbar.astro';
 
+export async function getStaticPaths() {
+  const allProjects = await getCollection('projects');
+  const pageSize = 8;
+  const totalPages = Math.ceil(allProjects.length / pageSize);
+  
+  // Only generate paths for pages 2 and beyond (page 1 is handled by index.astro)
+  if (totalPages <= 1) {
+    return [];
+  }
+  
+  return Array.from({ length: totalPages - 1 }, (_, i) => i + 2).map((pageNum) => ({
+    params: { page: pageNum.toString() },
+  }));
+}
+
 const allProjects = await getCollection('projects');
 const sortedProjects = allProjects.sort((a, b) => {
   const yearCompare = b.data.year.localeCompare(a.data.year);
@@ -12,14 +27,14 @@ const sortedProjects = allProjects.sort((a, b) => {
 
 // Pagination settings
 const pageSize = 8;
-const currentPage = 1;
+const currentPage = parseInt(Astro.params.page || '2');
 const totalPages = Math.ceil(sortedProjects.length / pageSize);
 const startIndex = (currentPage - 1) * pageSize;
 const endIndex = startIndex + pageSize;
 const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 ---
 
-<BaseLayout title="All Projects | Nikhil R. Nigam">
+<BaseLayout title={`All Projects - Page ${currentPage} | Nikhil R. Nigam`}>
   <div class="container" style="max-width: 1200px;">
     <Navbar />
 
@@ -44,7 +59,11 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
       {totalPages > 1 && (
         <nav class="pagination">
           {currentPage > 1 ? (
-            <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
+            currentPage === 2 ? (
+              <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
+            ) : (
+              <a href={`/projects/page/${currentPage - 1}`} class="pagination-link pagination-prev">← Previous</a>
+            )
           ) : (
             <span class="pagination-link pagination-prev disabled">← Previous</span>
           )}
@@ -73,3 +92,4 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
     <div style="padding-bottom: 6rem;"></div>
   </div>
 </BaseLayout>
+

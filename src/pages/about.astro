@@ -1,93 +1,195 @@
 ---
-// CLEAN IMPORTS
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Navbar from '@components/Navbar.astro';
-import ProjectRow from '@components/ProjectRow.astro';
-import { getCollection } from 'astro:content';
-
-const allProjects = await getCollection('projects');
-const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
 ---
 
 <BaseLayout title="About | Nikhil R. Nigam">
-  <div class="container" style="max-width: 1200px;">
     <Navbar />
-
-    <div class="page-header">
-      <h1>About Me</h1>
-      <p class="bio-text">
-        I'm a Machine Learning Engineer passionate about building intelligent systems that work at scale.
-        At <strong style="color: var(--accent)">Modlee</strong>, I develop recommendation engines and backend infrastructure that connect research concepts with reliable production systems.
-        <br><br>
-        I completed my <strong>M.S. in ECE at the University of Wisconsin–Madison</strong>, specializing in machine learning.
-        I also interned at <strong>InterDigital</strong>, where I worked on compression techniques for wireless systems—blending theory with practical implementation.
-        <br><br>
-        When not coding, you'll likely find me biking, hiking, or watching <strong>Manchester United</strong>.
-        I'm a sports enthusiast and believe that the energy I bring to my hobbies fuels my professional work ethic—cliché, but true.
-        <br><br>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent);">
-          STATUS: BASED IN USA (F1 VISA) // OPEN TO OPPORTUNITIES
-        </span>
-      </p>
-    </div>
-
-    <div class="section-header-label">EXPERIENCE_LOG</div>
-
-    <div class="exp-row">
-      <div class="date">SEPT 2023 - NOV 2025</div>
-      <div>
-        <div class="role-title">Machine Learning Engineer</div>
-        <span class="company">MODLEE INC</span>
-        <div class="details">
-          <ul>
-            <li><strong>System Architect:</strong> Engineered a centralized vector search system for model recommendation, scaling to support thousands of concurrent experiments.</li>
-            <li><strong>Platform Engineering:</strong> Designed a reusable Agentic Framework to standardize how external partners integrate generative AI tools.</li>
-            <li><strong>Full Stack AI:</strong> Built privacy-first extraction pipelines for compliance-heavy industries, ensuring 100% data sovereignty.</li>
-            <li><strong>MLOps:</strong> Standardized velocity with integrated MLflow and built pipelines to backfill historical R&D data into modern registries.</li>
-          </ul>
+    
+    <div class="container" style="max-width: 1100px;">
+        
+        <div class="about-hero">
+            <div class="about-text">
+                <h1>About Me</h1>
+                <p class="bio-text">
+                    I am a Machine Learning Engineer with five years of experience building intelligent systems that work at scale. My expertise spans the "messy middle" of AI—bridging the gap between research notebooks and high-availability production systems.
+                    <br><br>
+                    At Modlee, I architected the backend infrastructure for recommendation engines and agentic workflows, focusing on System Design, Privacy-First AI, and Scalable MLOps.
+                    <br><br>
+                    My journey began in software engineering at Vodafone, where I built financial systems for 5,000+ employees. I then transitioned to AI research at UW-Madison and InterDigital, developing novel deep learning architectures for wireless compression. This blend of enterprise rigor and research depth defines my engineering approach.
+                    <br><br>
+                    Off the keyboard, I channel my energy into biking, hiking, and suffering through Manchester United matches. I believe that high-agency in hobbies translates to high-ownership in engineering.
+                    <br><br>
+                    <span class="status-badge">
+                        STATUS: BASED IN USA (F1 VISA) // OPEN TO OPPORTUNITIES
+                    </span>
+                </p>
+            </div>
+            
+            <div class="about-image-container">
+                <img src="/profile.jpg" alt="Nikhil R. Nigam" class="profile-img" />
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="exp-row">
-      <div class="date">MAY 2022 - AUG 2022</div>
-      <div>
-        <div class="role-title">Deep Learning Intern</div>
-        <span class="company">INTERDIGITAL INC</span>
-        <div class="details">
-          <ul>
-            <li>Achieved a <strong>40% bandwidth reduction</strong> developing a novel CNN autoencoder for wireless networks.</li>
-            <li>Improved signal reconstruction by integrating Convolutional Block Attention Modules (CBAM).</li>
-          </ul>
+        <div class="section-header-label">EXPERIENCE_LOG</div>
+
+        <div class="exp-row">
+            <div class="date">SEPT 2023 - NOV 2025</div>
+            <div>
+                <div class="role-title">Machine Learning Engineer</div>
+                <span class="company">MODLEE INC</span>
+                <div class="details">
+                    <ul>
+                        <li><strong>System Architect:</strong> Architected and deployed a real-time, multi-modal vector search engine (Milvus), driving a 5x expansion of the experiment catalog and enabling sub-second predictions.</li>
+                        <li><strong>Agentic AI:</strong> Spearheaded a modular data aggregator framework for agentic workflows, streamlining SQL/REST data extraction and enabling rapid analysis via LLM orchestration.</li>
+                        <li><strong>Privacy Engineering:</strong> Designed a full-stack, privacy-first OCR pipeline (EasyOCR + Local Ollama) for structuring text from complex documents without external data egress.</li>
+                        <li><strong>Infrastructure & MLOps:</strong> Enhanced team velocity by standardizing experiment tracking with MLflow and building robust API verification pipelines to ensure high data integrity.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="exp-row">
-      <div class="date">JUL 2018 - JUL 2021</div>
-      <div>
-        <div class="role-title">Software Engineer</div>
-        <span class="company">VODAFONE</span>
-        <div class="details">
-          <ul>
-            <li>Subject Matter Expert for internal financial tooling; led the development of a mission-critical API for 5,000+ employees.</li>
-            <li>Cut average expense approval time by 50% via a secure 'lazy approval' UX.</li>
-          </ul>
+        <div class="exp-row">
+            <div class="date">MAY 2022 - AUG 2022</div>
+            <div>
+                <div class="role-title">Research & Innovation Intern</div>
+                <span class="company">INTERDIGITAL INC</span>
+                <div class="details">
+                    <ul>
+                        <li><strong>Novel Architectures:</strong> Developed custom CNN autoencoders for wireless channel state information (CSI) feedback.</li>
+                        <li><strong>Research Impact:</strong> Achieved a <strong>40% bandwidth reduction</strong> over SOTA baselines by integrating novel attention mechanisms (CBAM) into the compression pipeline.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="exp-row">
+            <div class="date">JUL 2018 - JUL 2021</div>
+            <div>
+                <div class="role-title">Software Engineer</div>
+                <span class="company">VODAFONE (_VOIS)</span>
+                <div class="details">
+                    <ul>
+                        <li><strong>Enterprise Scale:</strong> Led end-to-end development of FinX, a mission-critical financial API serving 5,000+ employees.</li>
+                        <li><strong>Automation:</strong> Designed a "Lazy Approval" UX integrated with Outlook, cutting average expense approval times by 50%.</li>
+                        <li><strong>Reliability:</strong> Designated Subject Matter Expert (SME) for the internal financial stack due to maintaining 99.9% uptime.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem;" class="section-header-label">ACADEMICS_AND_CERTS</div>
+
+        <div class="exp-row">
+            <div class="date">2021 - 2023</div>
+            <div>
+                <div class="role-title">M.S. in ECE (Machine Learning)</div>
+                <span class="company">UNIVERSITY OF WISCONSIN - MADISON</span>
+                <div class="details">
+                    <strong>GPA: 3.6/4.0</strong><br>
+                    <span style="color: var(--text-muted);">Focus Areas: Generative AI, Computer Vision, LLMs.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="exp-row">
+            <div class="date">2014 - 2018</div>
+            <div>
+                <div class="role-title">B.Eng. Electronics & Telecom</div>
+                <span class="company">MIT PUNE, INDIA</span>
+                <div class="details">
+                    <strong>Grade: First Class with Distinction</strong><br>
+                    <span style="color: var(--text-muted);">Executive Founding Member, MIT IEEE Student Branch.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="exp-row">
+            <div class="date">CERTIFICATIONS</div>
+            <div>
+                <ul class="details">
+                    <li><strong>DeepLearning.AI:</strong> Natural Language Processing Specialization</li>
+                    <li><strong>DeepLearning.AI:</strong> Advanced Computer Vision with TensorFlow</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="padding-bottom: 6rem;"></div>
+        <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
     </div>
-
-    <div style="margin-top: 4rem;" class="section-header-label">EDUCATION_LOG</div>
-
-    <div class="exp-row">
-      <div class="date">2023</div>
-      <div>
-        <div class="role-title">M.S. in ECE (Machine Learning)</div>
-        <span class="company">UNIVERSITY OF WISCONSIN - MADISON</span>
-        <div class="details">GPA: 3.6/4.0</div>
-      </div>
-    </div>
-
-    <div style="padding-bottom: 6rem;"></div>
-  </div>
 </BaseLayout>
+
+<style>
+    /* GRID LAYOUT FOR ABOUT SECTION */
+    .about-hero {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 4rem;
+        margin-bottom: 6rem;
+        /* Changed to center to fix vertical alignment */
+        align-items: center;
+    }
+
+    .about-text h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        line-height: 1;
+        color: var(--accent);
+    }
+
+    .bio-text {
+        font-size: 1.15rem;
+        /* Changed to text-main for pure white */
+        color: var(--text-main); 
+        font-weight: 300;
+        line-height: 1.7;
+    }
+
+    /* Removed the strong selector to ensure no bolding */
+
+    .status-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--accent);
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 8px 12px;
+        border: 1px solid var(--line-color);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* IMAGE STYLING */
+    .about-image-container {
+        position: relative;
+        /* Removed padding-top for better center alignment */
+    }
+
+    .profile-img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--line-color);
+        /* Removed grayscale filter and transition */
+    }
+
+    /* Removed hover effect */
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+        .about-hero {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .about-image-container {
+            order: -1;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .about-text h1 {
+            font-size: 3rem;
+        }
+    }
+</style>

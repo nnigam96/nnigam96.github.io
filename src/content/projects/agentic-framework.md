@@ -5,7 +5,7 @@ description: "Standardized MCP Server for deploying schema-driven AI agents."
 tags: ["LangChain", "Agents", "MCP", "Platform"]
 metric_value: "Rapid"
 metric_label: "Integration"
-featured: true
+featured: false
 order: 2
 ---
 

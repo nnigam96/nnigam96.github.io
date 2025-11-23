@@ -5,7 +5,7 @@ description: "End-to-end transformer-based German-to-English translation model t
 tags: ["PyTorch", "Transformers", "NLP", "Sequence-to-Sequence", "Model Training"]
 metric_value: "BLEU"
 metric_label: "Translation Quality"
-featured: true
+featured: False
 order: 4
 ---
 
