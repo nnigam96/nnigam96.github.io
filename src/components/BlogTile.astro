@@ -1,0 +1,107 @@
+---
+export interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  tags: string[];
+  readingTime: string;
+  url: string;
+}
+
+const { title, date, description, tags, readingTime, url } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={url} class="blog-tile">
+  <div class="blog-tile-date">{formattedDate}</div>
+  <h3 class="blog-tile-title">{title}</h3>
+  <p class="blog-tile-description">{description}</p>
+  <div class="blog-tile-footer">
+    <span class="blog-tile-reading-time">{readingTime}</span>
+    <div class="blog-tile-tags">
+      {tags.map((tag) => (
+        <span class="blog-tag">{tag}</span>
+      ))}
+    </div>
+  </div>
+</a>
+
+<style>
+  .blog-tile {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border: 1px solid var(--line-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-tile:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+  }
+
+  .blog-tile-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .blog-tile-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    line-height: 1.2;
+  }
+
+  .blog-tile-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .blog-tile-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-color);
+  }
+
+  .blog-tile-reading-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .blog-tile-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    padding: 2px 8px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+  }
+</style>
+

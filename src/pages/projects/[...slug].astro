@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
+  <div class="container" style="max-width: 900px;">
+    <nav class="case-study-nav">
+      <a href="/" class="logo">NIKHIL<span>.ML</span></a>
+      <a href="/" class="back-link">← HOME</a>
+    </nav>
+
+    <article class="case-study">
+      <span class="meta">PROJECT CASE STUDY // {entry.data.year}</span>
+      <h1>{entry.data.title}</h1>
+
+      {entry.data.highlights && entry.data.highlights.length > 0 ? (
+        <div class="highlights-banner">
+          {entry.data.highlights.map((highlight) => (
+            <div class="highlight-item">
+              {highlight.value && (
+                <span class="highlight-value">{highlight.value}</span>
+              )}
+              {highlight.label && (
+                <span class="highlight-label">{highlight.label}</span>
+              )}
+              {highlight.text && (
+                <p class="highlight-text">{highlight.text}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="stats-grid">
+          <div>
+            <span class="stat-val">{entry.data.metric_value}</span>
+            <span class="stat-lbl">{entry.data.metric_label}</span>
+          </div>
+        </div>
+      )}
+
+      <Content />
+    </article>
+
+    <div style="padding-bottom: 6rem;"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .highlights-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+  }
+
+  .highlight-item {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .highlight-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

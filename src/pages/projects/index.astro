@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => {
+  const yearCompare = b.data.year.localeCompare(a.data.year);
+  if (yearCompare !== 0) return yearCompare;
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<BaseLayout title="All Projects | Nikhil R. Nigam">
+  <div class="container" style="max-width: 1200px;">
+    <Navbar />
+
+    <div class="archive-page">
+      <h1>Project Archive</h1>
+
+      {sortedProjects.map((project) => (
+        <a href={`/projects/${project.slug}`} class="archive-row">
+          <div class="year">{project.data.year}</div>
+          <div>
+            <div class="archive-title">{project.data.title}</div>
+            <p class="archive-desc">{project.data.description}</p>
+          </div>
+          <div class="archive-tags">
+            {project.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div style="padding-bottom: 6rem;"></div>
+  </div>
+</BaseLayout>

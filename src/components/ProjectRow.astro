@@ -1,0 +1,30 @@
+---
+export interface Props {
+  title: string;
+  year: string;
+  description: string;
+  tags: string[];
+  metric_value: string;
+  metric_label: string;
+  url: string;
+}
+
+const { title, year, description, tags, metric_value, metric_label, url } = Astro.props;
+---
+
+<a href={url} class="project-row">
+  <div class="project-year">{year}</div>
+  <div class="project-main">
+    <h3>{title}</h3>
+    <p class="project-desc">{description}</p>
+    <div class="tags">
+      {tags.map((tag) => (
+        <span>#{tag}</span>
+      ))}
+    </div>
+  </div>
+  <div class="project-stat">
+    <span class="stat-number">{metric_value}</span>
+    <span class="stat-label">{metric_label}</span>
+  </div>
+</a>
