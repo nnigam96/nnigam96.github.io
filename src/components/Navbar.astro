@@ -1,0 +1,21 @@
+---
+const navItems = [
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Blog", path: "/blog" },
+  { name: "GitHub", path: "https://github.com/nnigam96" },
+  { name: "LinkedIn", path: "https://linkedin.com/in/nikhil-nigam-31131b12a" },
+];
+---
+
+<nav>
+  <div class="nav-inner" style="width: 100%;">
+    <a href="/" class="logo">NIKHIL<span>.ML</span></a>
+    
+    <div class="nav-links">
+      {navItems.map(item => (
+        <a href={item.path} class="nav-item" target={item.path.startsWith('http') ? '_blank' : undefined} rel={item.path.startsWith('http') ? 'noopener noreferrer' : undefined}>{item.name}</a>
+      ))}
+    </div>
+  </div>
+</nav>

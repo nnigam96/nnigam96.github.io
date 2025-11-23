@@ -1,0 +1,95 @@
+---
+// 1. IMPORTS (Using your new Aliases)
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+import ProjectRow from '@components/ProjectRow.astro';
+import { getCollection } from 'astro:content';
+
+// 2. DATA LOGIC (This was missing/broken)
+const allProjects = await getCollection('projects');
+
+// Filter for featured projects & sort by order
+const featuredProjects = allProjects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Nikhil R. Nigam | ML Engineer">
+  <Navbar />
+
+  <header class="hero-section">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1>Nikhil R. Nigam</h1>
+        <div class="role-wrapper">
+          <span>Machine Learning Engineer</span>
+          <span class="cursor"></span>
+        </div>
+        <p class="hero-bio">
+            I build the infrastructure that makes AI reliable. 
+            From <strong>Sub-second Vector Search</strong> to <strong>Privacy-First RAG systems</strong>, 
+            I bridge the gap between research prototypes and production durability.
+        </p>
+        
+        <div class="hero-actions">
+            <a href="mailto:niknigam96@gmail.com" class="cta-btn">Get in Touch</a>
+            <a href="/resume.pdf" download="Nikhil_Nigam_Resume.pdf" class="cta-btn-outline">Download Resume ↓</a>
+        </div>
+      </div>
+
+      <div class="tech-container">
+        <div class="tech-header">
+          <div class="status-dot"></div>
+          <span>SYSTEM KERNEL [ONLINE]</span>
+        </div>
+        
+        <div class="tech-row">
+          <span class="tech-label">Core</span>
+          <div class="tech-items">
+            <span class="tech-item">Python</span> <span class="tech-item">PyTorch</span> 
+            <span class="tech-item">LangChain</span> <span class="tech-item">Ollama</span>
+          </div>
+        </div>
+        
+        <div class="tech-row">
+          <span class="tech-label">Infra</span>
+          <div class="tech-items">
+            <span class="tech-item">AWS (EC2/S3)</span> <span class="tech-item">Docker</span> 
+            <span class="tech-item">Milvus</span> <span class="tech-item">Linux</span>
+          </div>
+        </div>
+        
+        <div class="tech-row">
+          <span class="tech-label">Ops</span>
+          <div class="tech-items">
+            <span class="tech-item">MLflow</span> <span class="tech-item">CI/CD</span> 
+            <span class="tech-item">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects" class="work-section">
+    <div class="section-header">
+      <h2 class="section-title">Selected Deployments</h2>
+      <a href="/projects" class="archive-link">VIEW FULL ARCHIVE →</a>
+    </div>
+
+    {featuredProjects.map((project) => (
+      <ProjectRow 
+        url={`/projects/${project.slug}`}
+        title={project.data.title}
+        year={project.data.year}
+        description={project.data.description}
+        tags={project.data.tags}
+        metric_value={project.data.metric_value}
+        metric_label={project.data.metric_label}
+      />
+    ))}
+  </section>
+
+  <footer>
+    <span>© 2025 NIKHIL R. NIGAM // ALL SYSTEMS NOMINAL</span>
+  </footer>
+</BaseLayout>

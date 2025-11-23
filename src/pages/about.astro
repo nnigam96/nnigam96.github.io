@@ -1,0 +1,93 @@
+---
+// CLEAN IMPORTS
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+import ProjectRow from '@components/ProjectRow.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="About | Nikhil R. Nigam">
+  <div class="container" style="max-width: 1200px;">
+    <Navbar />
+
+    <div class="page-header">
+      <h1>About Me</h1>
+      <p class="bio-text">
+        I'm a Machine Learning Engineer passionate about building intelligent systems that work at scale.
+        At <strong style="color: var(--accent)">Modlee</strong>, I develop recommendation engines and backend infrastructure that connect research concepts with reliable production systems.
+        <br><br>
+        I completed my <strong>M.S. in ECE at the University of Wisconsin–Madison</strong>, specializing in machine learning.
+        I also interned at <strong>InterDigital</strong>, where I worked on compression techniques for wireless systems—blending theory with practical implementation.
+        <br><br>
+        When not coding, you'll likely find me biking, hiking, or watching <strong>Manchester United</strong>.
+        I'm a sports enthusiast and believe that the energy I bring to my hobbies fuels my professional work ethic—cliché, but true.
+        <br><br>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent);">
+          STATUS: BASED IN USA (F1 VISA) // OPEN TO OPPORTUNITIES
+        </span>
+      </p>
+    </div>
+
+    <div class="section-header-label">EXPERIENCE_LOG</div>
+
+    <div class="exp-row">
+      <div class="date">SEPT 2023 - NOV 2025</div>
+      <div>
+        <div class="role-title">Machine Learning Engineer</div>
+        <span class="company">MODLEE INC</span>
+        <div class="details">
+          <ul>
+            <li><strong>System Architect:</strong> Engineered a centralized vector search system for model recommendation, scaling to support thousands of concurrent experiments.</li>
+            <li><strong>Platform Engineering:</strong> Designed a reusable Agentic Framework to standardize how external partners integrate generative AI tools.</li>
+            <li><strong>Full Stack AI:</strong> Built privacy-first extraction pipelines for compliance-heavy industries, ensuring 100% data sovereignty.</li>
+            <li><strong>MLOps:</strong> Standardized velocity with integrated MLflow and built pipelines to backfill historical R&D data into modern registries.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="date">MAY 2022 - AUG 2022</div>
+      <div>
+        <div class="role-title">Deep Learning Intern</div>
+        <span class="company">INTERDIGITAL INC</span>
+        <div class="details">
+          <ul>
+            <li>Achieved a <strong>40% bandwidth reduction</strong> developing a novel CNN autoencoder for wireless networks.</li>
+            <li>Improved signal reconstruction by integrating Convolutional Block Attention Modules (CBAM).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="date">JUL 2018 - JUL 2021</div>
+      <div>
+        <div class="role-title">Software Engineer</div>
+        <span class="company">VODAFONE</span>
+        <div class="details">
+          <ul>
+            <li>Subject Matter Expert for internal financial tooling; led the development of a mission-critical API for 5,000+ employees.</li>
+            <li>Cut average expense approval time by 50% via a secure 'lazy approval' UX.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 4rem;" class="section-header-label">EDUCATION_LOG</div>
+
+    <div class="exp-row">
+      <div class="date">2023</div>
+      <div>
+        <div class="role-title">M.S. in ECE (Machine Learning)</div>
+        <span class="company">UNIVERSITY OF WISCONSIN - MADISON</span>
+        <div class="details">GPA: 3.6/4.0</div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 6rem;"></div>
+  </div>
+</BaseLayout>

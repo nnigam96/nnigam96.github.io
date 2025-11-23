@@ -1,0 +1,173 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navbar from '@components/Navbar.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formattedDate = entry.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
+  <div class="container" style="max-width: 900px;">
+    <Navbar />
+
+    <nav class="blog-post-nav">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+    </nav>
+
+    <article class="blog-post">
+      <div class="blog-post-meta">
+        <span class="blog-post-date">{formattedDate}</span>
+        <span class="blog-post-reading-time">{entry.data.readingTime}</span>
+      </div>
+      
+      <h1 class="blog-post-title">{entry.data.title}</h1>
+      
+      <p class="blog-post-description">{entry.data.description}</p>
+
+      <div class="blog-post-tags">
+        {entry.data.tags.map((tag) => (
+          <span class="blog-tag">{tag}</span>
+        ))}
+      </div>
+
+      <div class="blog-post-content">
+        <Content />
+      </div>
+    </article>
+
+    <div style="padding-bottom: 6rem;"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-post-nav {
+    padding: 2.5rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line-color);
+  }
+
+  .blog-post-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .blog-post-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    line-height: 1.1;
+  }
+
+  .blog-post-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .blog-post-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line-color);
+  }
+
+  .blog-post-content {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+  }
+
+  .blog-post-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+  }
+
+  .blog-post-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .blog-post-content p {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .blog-post-content ul,
+  .blog-post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    color: var(--text-muted);
+  }
+
+  .blog-post-content li {
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-post-content code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  .blog-post-content pre {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-post-content pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-main);
+  }
+
+  @media (max-width: 768px) {
+    .blog-post-title {
+      font-size: 2rem;
+    }
+
+    .blog-post-description {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
