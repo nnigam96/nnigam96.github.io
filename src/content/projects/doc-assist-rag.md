@@ -3,8 +3,12 @@ title: "Local RAG System with Hybrid Retrieval"
 year: "2024"
 description: "Production-ready document Q&A system using local LLMs, FAISS embeddings, and hybrid semantic-keyword retrieval for privacy-sensitive applications."
 tags: ["RAG", "FAISS", "Local LLM", "Embeddings", "Information Retrieval"]
-metric_value: "100%"
-metric_label: "Local Inference"
+
+metrics:
+  - value: "100%"
+    label: "Local Inference"
+  - value: "FAISS"
+    label: "backend"
 featured: False
 order: 3
 ---

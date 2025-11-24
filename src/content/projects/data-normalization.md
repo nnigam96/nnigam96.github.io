@@ -6,6 +6,7 @@ tags: ["Data Engineering", "Agents", "Python"]
 metric_value: "Auto"
 metric_label: "Schema Mapping"
 featured: false
+archived: true
 order: 4
 ---
 

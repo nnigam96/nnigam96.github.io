@@ -3,20 +3,16 @@ title: "Biological Age Prediction from Medical Imaging"
 year: "2023"
 description: "Multi-modal healthcare ML system predicting biological age and mortality risk from CT imaging and clinical variables using neural networks."
 tags: ["PyTorch", "Healthcare ML", "Multi-Modal Learning", "Medical Imaging", "Predictive Modeling"]
-metric_value: "Multi-Modal"
-metric_label: "CT + Clinical Data"
 featured: false
 order: 0
-highlights:
+metrics:
+  - value: "Multi-Modal"
+    label: "CT + Clinical Data"
   - value: "CT Scans"
     label: "IMAGING"
-    text: "Opportunistic cardiometabolic screening data"
   - value: "Clinical"
     label: "VARIABLES"
-    text: "Demographics, lab values, health metrics"
-  - value: "Outcomes"
-    label: "PREDICTIONS"
-    text: "Biological age, mortality risk, health endpoints"
+homepage_metric_index: 0
 ---
 
 ## The Challenge

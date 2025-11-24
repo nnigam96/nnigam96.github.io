@@ -4,7 +4,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Navbar from '@components/Navbar.astro';
 
 const allProjects = await getCollection('projects');
-const sortedProjects = allProjects.sort((a, b) => {
+// Filter out archived projects (explicit boolean check)
+const activeProjects = allProjects.filter((project) => project.data.archived !== true);
+const sortedProjects = activeProjects.sort((a, b) => {
   const yearCompare = b.data.year.localeCompare(a.data.year);
   if (yearCompare !== 0) return yearCompare;
   return a.data.title.localeCompare(b.data.title);
@@ -20,13 +22,14 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 ---
 
 <BaseLayout title="All Projects | Nikhil R. Nigam">
-  <div class="container" style="max-width: 1200px;">
-    <Navbar />
+  <Navbar />
 
-    <div class="archive-page">
+    <div class="page-header">
       <h1>Project Archive</h1>
+      <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
+    </div>
 
-      {paginatedProjects.map((project) => (
+    {paginatedProjects.map((project) => (
         <a href={`/projects/${project.slug}`} class="archive-row">
           <div class="year">{project.data.year}</div>
           <div>
@@ -41,35 +44,32 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
         </a>
       ))}
 
-      {totalPages > 1 && (
-        <nav class="pagination">
-          {currentPage > 1 ? (
-            <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
-          ) : (
-            <span class="pagination-link pagination-prev disabled">← Previous</span>
-          )}
-          
-          <div class="pagination-numbers">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
-              if (pageNum === currentPage) {
-                return <span class="pagination-number active">{pageNum}</span>;
-              } else if (pageNum === 1) {
-                return <a href="/projects" class="pagination-number">{pageNum}</a>;
-              } else {
-                return <a href={`/projects/page/${pageNum}`} class="pagination-number">{pageNum}</a>;
-              }
-            })}
-          </div>
+    {totalPages > 1 && (
+      <nav class="pagination">
+        {currentPage > 1 ? (
+          <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
+        ) : (
+          <span class="pagination-link pagination-prev disabled">← Previous</span>
+        )}
+        
+        <div class="pagination-numbers">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+            if (pageNum === currentPage) {
+              return <span class="pagination-number active">{pageNum}</span>;
+            } else if (pageNum === 1) {
+              return <a href="/projects" class="pagination-number">{pageNum}</a>;
+            } else {
+              return <a href={`/projects/page/${pageNum}`} class="pagination-number">{pageNum}</a>;
+            }
+          })}
+        </div>
 
-          {currentPage < totalPages ? (
-            <a href={`/projects/page/${currentPage + 1}`} class="pagination-link pagination-next">Next →</a>
-          ) : (
-            <span class="pagination-link pagination-next disabled">Next →</span>
-          )}
-        </nav>
-      )}
-    </div>
-
-    <div style="padding-bottom: 6rem;"></div>
+        {currentPage < totalPages ? (
+          <a href={`/projects/page/${currentPage + 1}`} class="pagination-link pagination-next">Next →</a>
+        ) : (
+          <span class="pagination-link pagination-next disabled">Next →</span>
+        )}
+      </nav>
+    )}
   </div>
 </BaseLayout>

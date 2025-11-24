@@ -5,8 +5,10 @@ import Navbar from '@components/Navbar.astro';
 
 export async function getStaticPaths() {
   const allProjects = await getCollection('projects');
+  // Filter out archived projects (explicit boolean check)
+  const activeProjects = allProjects.filter((project) => project.data.archived !== true);
   const pageSize = 8;
-  const totalPages = Math.ceil(allProjects.length / pageSize);
+  const totalPages = Math.ceil(activeProjects.length / pageSize);
   
   // Only generate paths for pages 2 and beyond (page 1 is handled by index.astro)
   if (totalPages <= 1) {
@@ -19,7 +21,9 @@ export async function getStaticPaths() {
 }
 
 const allProjects = await getCollection('projects');
-const sortedProjects = allProjects.sort((a, b) => {
+// Filter out archived projects (explicit boolean check)
+const activeProjects = allProjects.filter((project) => project.data.archived !== true);
+const sortedProjects = activeProjects.sort((a, b) => {
   const yearCompare = b.data.year.localeCompare(a.data.year);
   if (yearCompare !== 0) return yearCompare;
   return a.data.title.localeCompare(b.data.title);

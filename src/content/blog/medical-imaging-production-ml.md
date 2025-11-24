@@ -4,6 +4,7 @@ date: 2024-12-15
 description: "Lessons learned building production-grade medical imaging pipelines: data handling, HPC training, and evaluation strategies for MRI denoising and biological age prediction."
 tags: ["Medical Imaging", "Production ML", "MONAI", "Healthcare"]
 readingTime: "8 min read"
+archived: true
 ---
 
 ## Introduction

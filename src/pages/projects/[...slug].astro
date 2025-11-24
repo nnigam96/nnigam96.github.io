@@ -5,10 +5,13 @@ import Navbar from '@components/Navbar.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
-  return projects.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  // Only generate paths for non-archived projects (explicit boolean check)
+  return projects
+    .filter((entry) => entry.data.archived !== true)
+    .map((entry) => ({
+      params: { slug: entry.slug },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
@@ -16,42 +19,48 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
-  <div class="container" style="max-width: 900px;">
-    <nav class="case-study-nav">
-      <a href="/" class="logo">NIKHIL<span>.ML</span></a>
-      <a href="/" class="back-link">← HOME</a>
-    </nav>
-
+  <Navbar />
+  <div class="case-container">
     <article class="case-study">
       <span class="meta">PROJECT CASE STUDY // {entry.data.year}</span>
       <h1>{entry.data.title}</h1>
 
-      {entry.data.highlights && entry.data.highlights.length > 0 ? (
-        <div class="highlights-banner">
-          {entry.data.highlights.map((highlight) => (
-            <div class="highlight-item">
-              {highlight.value && (
-                <span class="highlight-value">{highlight.value}</span>
-              )}
-              {highlight.label && (
-                <span class="highlight-label">{highlight.label}</span>
-              )}
-              {highlight.text && (
-                <p class="highlight-text">{highlight.text}</p>
-              )}
+      {(() => {
+        // Use new metrics array if available, otherwise fallback to legacy fields
+        let metricsToShow = [];
+        
+        if (entry.data.metrics && entry.data.metrics.length > 0) {
+          // Reorder metrics so homepage metric is first
+          const homepageIndex = entry.data.homepage_metric_index ?? 0;
+          const reorderedMetrics = [...entry.data.metrics];
+          if (homepageIndex > 0 && homepageIndex < reorderedMetrics.length) {
+            const [homepageMetric] = reorderedMetrics.splice(homepageIndex, 1);
+            reorderedMetrics.unshift(homepageMetric);
+          }
+          metricsToShow = reorderedMetrics;
+        } else if (entry.data.metric_value && entry.data.metric_label) {
+          // Fallback to legacy format
+          metricsToShow = [{ value: entry.data.metric_value, label: entry.data.metric_label }];
+        }
+        
+        if (metricsToShow.length > 0) {
+          return (
+            <div class="metrics-grid">
+              {metricsToShow.map((metric) => (
+                <div class="metric-item">
+                  <span class="metric-value">{metric.value}</span>
+                  <span class="metric-label">{metric.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div class="stats-grid">
-          <div>
-            <span class="stat-val">{entry.data.metric_value}</span>
-            <span class="stat-lbl">{entry.data.metric_label}</span>
-          </div>
-        </div>
-      )}
+          );
+        }
+        return null;
+      })()}
 
-      <Content />
+      <div class="case-study-content arithmatex">
+        <Content />
+      </div>
     </article>
 
     <div style="padding-bottom: 6rem;"></div>
@@ -59,23 +68,33 @@ const { Content } = await entry.render();
 </BaseLayout>
 
 <style>
-  .highlights-banner {
+  .metrics-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 0;
     margin: 3rem 0;
     padding: 2rem;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid var(--accent);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line-color);
     border-radius: 4px;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  .highlight-item {
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
-    min-width: 200px;
+    text-align: center;
   }
 
-  .highlight-value {
+  .metric-item:not(:last-child) {
+    border-right: 1px solid var(--line-color);
+    padding-right: 2rem;
+    margin-right: 2rem;
+  }
+
+  .metric-value {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
@@ -85,20 +104,36 @@ const { Content } = await entry.render();
     margin-bottom: 0.5rem;
   }
 
-  .highlight-label {
+  .metric-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     color: var(--text-muted);
     text-transform: uppercase;
     display: block;
-    margin-bottom: 0.5rem;
   }
 
-  .highlight-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: var(--text-main);
-    line-height: 1.6;
-    margin: 0;
+  @media (max-width: 768px) {
+    .metrics-grid {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+    
+    .metric-item {
+      width: 100%;
+    }
+    
+    .metric-item:not(:last-child) {
+      border-right: none;
+      border-bottom: 1px solid var(--line-color);
+      padding-right: 0;
+      margin-right: 0;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .metric-value {
+      font-size: 2.5rem;
+    }
   }
 </style>

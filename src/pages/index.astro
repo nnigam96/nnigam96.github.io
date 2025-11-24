@@ -8,9 +8,9 @@ import { getCollection } from 'astro:content';
 // 2. DATA LOGIC (This was missing/broken)
 const allProjects = await getCollection('projects');
 
-// Filter for featured projects & sort by order
+// Filter for featured projects & sort by order (exclude archived - explicit boolean check)
 const featuredProjects = allProjects
-  .filter((project) => project.data.featured)
+  .filter((project) => project.data.featured && project.data.archived !== true)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -78,17 +78,32 @@ const featuredProjects = allProjects
       <a href="/projects" class="archive-link">VIEW FULL ARCHIVE →</a>
     </div>
 
-    {featuredProjects.map((project) => (
-      <ProjectRow 
-        url={`/projects/${project.slug}`}
-        title={project.data.title}
-        year={project.data.year}
-        description={project.data.description}
-        tags={project.data.tags}
-        metric_value={project.data.metric_value}
-        metric_label={project.data.metric_label}
-      />
-    ))}
+    {featuredProjects.map((project) => {
+      // Get homepage metric: use metrics array if available, otherwise fallback to legacy fields
+      let metricValue = project.data.metric_value || '';
+      let metricLabel = project.data.metric_label || '';
+      
+      if (project.data.metrics && project.data.metrics.length > 0) {
+        const homepageIndex = project.data.homepage_metric_index ?? 0;
+        const homepageMetric = project.data.metrics[homepageIndex];
+        if (homepageMetric) {
+          metricValue = homepageMetric.value;
+          metricLabel = homepageMetric.label;
+        }
+      }
+      
+      return (
+        <ProjectRow 
+          url={`/projects/${project.slug}`}
+          title={project.data.title}
+          year={project.data.year}
+          description={project.data.description}
+          tags={project.data.tags}
+          metric_value={metricValue}
+          metric_label={metricLabel}
+        />
+      );
+    })}
   </section>
 
   <footer>

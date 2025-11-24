@@ -3,8 +3,11 @@ title: "Intelligent Model Recommendation"
 year: "2024"
 description: "Sub-second recommendation engine analyzing high-dimensional meta-features via Milvus."
 tags: ["PyTorch", "Milvus", "RecSys", "System Design"]
-metric_value: "<1s"
-metric_label: "latency"
+metrics:
+  - value: "<1s"
+    label: "latency"
+  - value: "5x"
+    label: "Catalog Expansion"
 featured: true
 order: 1
 ---

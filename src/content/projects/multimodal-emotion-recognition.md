@@ -3,20 +3,16 @@ title: "Context-Aware Emotion Recognition"
 year: "2023"
 description: "Multi-modal emotion recognition system combining body pose and scene context, predicting both discrete emotions and continuous VAD dimensions."
 tags: ["PyTorch", "Computer Vision", "Multi-Modal Learning", "ResNet", "YOLO"]
-metric_value: "26"
-metric_label: "Emotion Categories"
 featured: false
 order: 0
-highlights:
+metrics:
+  - value: "26"
+    label: "Emotion Categories"
   - value: "Multi-Modal"
     label: "ARCHITECTURE"
-    text: "Body pose + scene context fusion"
-  - value: "26 Classes"
-    label: "DISCRETE"
-    text: "Categorical emotion prediction"
   - value: "VAD"
     label: "CONTINUOUS"
-    text: "Valence-Arousal-Dominance regression"
+homepage_metric_index: 0
 ---
 
 ## The Challenge

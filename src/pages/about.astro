@@ -6,11 +6,13 @@ import Navbar from '../components/Navbar.astro';
 <BaseLayout title="About | Nikhil R. Nigam">
     <Navbar />
     
-    <div class="container" style="max-width: 1100px;">
+    <div class="page-header">
+        <h1>About Me</h1>
+        <p class="page-subtitle">Where research-grade machine learning meets production reliability.</p>
+    </div>
         
-        <div class="about-hero">
+    <div class="about-hero">
             <div class="about-text">
-                <h1>About Me</h1>
                 <p class="bio-text">
                     I am a Machine Learning Engineer with five years of experience building intelligent systems that work at scale. My expertise spans the "messy middle" of AI—bridging the gap between research notebooks and high-availability production systems.
                     <br><br>
@@ -31,9 +33,9 @@ import Navbar from '../components/Navbar.astro';
             </div>
         </div>
 
-        <div class="section-header-label">EXPERIENCE_LOG</div>
+    <div class="section-header-label">EXPERIENCE_LOG</div>
 
-        <div class="exp-row">
+    <div class="exp-row">
             <div class="date">SEPT 2023 - NOV 2025</div>
             <div>
                 <div class="role-title">Machine Learning Engineer</div>
@@ -49,7 +51,7 @@ import Navbar from '../components/Navbar.astro';
             </div>
         </div>
 
-        <div class="exp-row">
+    <div class="exp-row">
             <div class="date">MAY 2022 - AUG 2022</div>
             <div>
                 <div class="role-title">Research & Innovation Intern</div>
@@ -63,7 +65,7 @@ import Navbar from '../components/Navbar.astro';
             </div>
         </div>
 
-        <div class="exp-row">
+    <div class="exp-row">
             <div class="date">JUL 2018 - JUL 2021</div>
             <div>
                 <div class="role-title">Software Engineer</div>
@@ -80,7 +82,7 @@ import Navbar from '../components/Navbar.astro';
 
         <div style="margin-top: 4rem;" class="section-header-label">ACADEMICS_AND_CERTS</div>
 
-        <div class="exp-row">
+    <div class="exp-row">
             <div class="date">2021 - 2023</div>
             <div>
                 <div class="role-title">M.S. in ECE (Machine Learning)</div>
@@ -92,7 +94,7 @@ import Navbar from '../components/Navbar.astro';
             </div>
         </div>
 
-        <div class="exp-row">
+    <div class="exp-row">
             <div class="date">2014 - 2018</div>
             <div>
                 <div class="role-title">B.Eng. Electronics & Telecom</div>
@@ -114,9 +116,8 @@ import Navbar from '../components/Navbar.astro';
             </div>
         </div>
         
-        <div style="padding-bottom: 6rem;"></div>
-        <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
-    </div>
+    <div style="padding-bottom: 6rem;"></div>
+    <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
 </BaseLayout>
 
 <style>
@@ -128,13 +129,6 @@ import Navbar from '../components/Navbar.astro';
         margin-bottom: 6rem;
         /* Changed to center to fix vertical alignment */
         align-items: center;
-    }
-
-    .about-text h1 {
-        font-size: 4rem;
-        margin-bottom: 1.5rem;
-        line-height: 1;
-        color: var(--accent);
     }
 
     .bio-text {
@@ -186,10 +180,6 @@ import Navbar from '../components/Navbar.astro';
             order: -1;
             max-width: 300px;
             margin: 0 auto;
-        }
-        
-        .about-text h1 {
-            font-size: 3rem;
         }
     }
 </style>

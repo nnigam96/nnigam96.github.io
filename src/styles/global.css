@@ -5,7 +5,7 @@
   --accent: #f59e0b;
   --accent-dim: rgba(245, 158, 11, 0.2);
   --line-color: rgba(255, 255, 255, 0.12);
-  --container: 1400px;
+  --container: 1200px;
 }
 
 /* 1. FIX: Stop the horizontal jump */
@@ -42,6 +42,26 @@ ul {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 40px;
+}
+
+.page-header {
+  margin: 0 0 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.page-header h1 {
+  color: var(--accent);
+  font-size: clamp(3rem, 4vw, 4rem);
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.page-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 700px;
 }
 
 /* TYPOGRAPHY */
@@ -468,23 +488,34 @@ footer {
   text-transform: uppercase;
 }
 
-/* ABOUT PAGE STYLES */
+/* ABOUT & ARCHIVE PAGE */
+
+/* 1. FIX: Remove max-width so the border stretches full container width */
 .page-header {
   margin-bottom: 6rem;
-  max-width: 800px;
+  /* max-width: 800px;  <-- DELETED THIS LINE */
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line-color);
 }
 
-.page-header h1 {
-  font-size: 4rem;
+/* 2. FIX: Standardize Font Size for ALL Page Headers */
+.page-header h1,
+.archive-page h1,
+.case-study h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  /* Fluid scaling: Minimum 3rem, Max 4.5rem */
+  font-size: clamp(3rem, 5vw, 4.5rem); 
+  color: var(--accent);
   margin-bottom: 1.5rem;
-  line-height: 1;
-  color: var(--accent); /* RESTORED: Header Color */
+  line-height: 1.1;
 }
 
-.bio-text {
+.bio-text, .page-subtitle {
   font-size: 1.2rem;
   color: var(--text-muted);
   font-weight: 300;
+  max-width: 800px; /* Keep text readable width, but let border go full width */
 }
 
 .about-nav {
@@ -817,4 +848,60 @@ footer {
     color: var(--accent);
     margin-bottom: 0.5rem;
   }
+}
+
+.case-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 6rem;
+}
+
+/* BLOG SPECIFIC TYPOGRAPHY */
+
+/* 1. Increase spacing between paragraphs */
+.blog-content p {
+  margin-bottom: 2rem; /* Was likely 1rem or 1.5rem */
+  font-size: 1.1rem;   /* Slightly larger for easier reading */
+  line-height: 1.8;    /* More breathing room between lines */
+  color: #d4d4d4;      /* Softer white than pure #fff */
+}
+
+/* 2. Make headings distinct breaks */
+.blog-content h2 {
+  margin-top: 4rem;    /* Big gap before new section */
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-color); /* visual divider */
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.blog-content h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+/* 3. Lists need breathing room too */
+.blog-content ul, .blog-content ol {
+  margin-bottom: 2rem;
+}
+.blog-content li {
+  margin-bottom: 0.8rem; /* Spacing between list items */
+  padding-left: 0.5rem;
+}
+
+/* 4. Images as visual breaks */
+.blog-content img {
+  margin: 3rem 0;      /* Push text away from images */
+  border-radius: 8px;
+  border: 1px solid var(--line-color);
+  background: #000;    /* Fallback background */
+  width: 100%;         /* Ensure full width */
+}
+
+/* Specific fix for Archive page gap only */
+.archive-page .page-header {
+  margin-bottom: 0;
 }

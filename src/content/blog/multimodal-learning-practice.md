@@ -4,6 +4,7 @@ date: 2024-12-05
 description: "Practical insights from building multi-modal systems: architecture design, fusion strategies, and loss function engineering for combining vision, text, and structured data."
 tags: ["Multi-Modal Learning", "Computer Vision", "Deep Learning", "System Design"]
 readingTime: "7 min read"
+archived: true
 ---
 
 ## Introduction

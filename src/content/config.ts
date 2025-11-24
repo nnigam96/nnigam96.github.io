@@ -7,17 +7,21 @@ const projectsCollection = defineCollection({
     year: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    metric_value: z.string(),
-    metric_label: z.string(),
+    // Legacy fields for backward compatibility
+    metric_value: z.string().optional(),
+    metric_label: z.string().optional(),
+    // New metrics system (max 3)
+    github_url: z.string().optional(),
+    metrics: z.array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      })
+    ).max(3).optional(),
+    homepage_metric_index: z.number().min(0).max(2).optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
-    highlights: z.array(
-      z.object({
-        value: z.string().optional(),
-        label: z.string().optional(),
-        text: z.string().optional(),
-      })
-    ).optional(),
+    archived: z.boolean().default(false),
   }),
 });
 
@@ -29,6 +33,7 @@ const blogCollection = defineCollection({
     description: z.string(),
     tags: z.array(z.string()),
     readingTime: z.string(),
+    archived: z.boolean().default(false),
   }),
 });
 

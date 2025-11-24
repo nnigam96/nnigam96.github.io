@@ -4,6 +4,7 @@ date: 2024-11-18
 description: "Exploring the trade-offs of running LLMs locally with Ollama, building privacy-first applications, and optimizing for resource-constrained environments."
 tags: ["Local LLM", "Ollama", "Privacy", "Edge Computing"]
 readingTime: "7 min read"
+archived: true
 ---
 
 ## Why Local LLMs Matter

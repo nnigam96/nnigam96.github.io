@@ -4,6 +4,7 @@ date: 2024-11-20
 description: "Designing reusable MCP servers, tool registries, and schema-driven agents that bridge the gap between research prototypes and enterprise deployment."
 tags: ["Agentic AI", "MCP", "LangChain", "System Design"]
 readingTime: "10 min read"
+archived: true
 ---
 
 ## The Agentic AI Landscape

@@ -3,10 +3,12 @@ title: "Privacy-First OCR Pipeline"
 year: "2024"
 description: "Hybrid compliance workflow using local Ollama models and EasyOCR."
 tags: ["Ollama", "Local LLM", "Privacy", "Computer Vision"]
-metric_value: "100%"
-metric_label: "Local Inference"
 featured: true
 order: 3
+metrics:
+  - value: "100%"
+    label: "Local Inference"
+homepage_metric_index: 0
 ---
 
 ## The Challenge

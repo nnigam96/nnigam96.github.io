@@ -3,10 +3,16 @@ title: "Neural Machine Translation System"
 year: "2024"
 description: "End-to-end transformer-based German-to-English translation model trained from scratch, deployed as a production API with Python package integration."
 tags: ["PyTorch", "Transformers", "NLP", "Sequence-to-Sequence", "Model Training"]
-metric_value: "BLEU"
-metric_label: "Translation Quality"
-featured: False
+featured: false
 order: 4
+metrics:
+  - value: "Transformer"
+    label: "Custom Neural Nets"
+  - value: "Flask"
+    label: "Backend"
+  - value: "BLEU Eval"
+    label: "Training Loop"
+homepage_metric_index: 0
 ---
 
 ## The Challenge

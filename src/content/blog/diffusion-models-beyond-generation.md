@@ -4,6 +4,7 @@ date: 2024-12-10
 description: "Adapting diffusion model architectures for supervised denoising tasks, exploring how generative model techniques can improve image restoration when paired training data exists."
 tags: ["Diffusion Models", "Medical Imaging", "Deep Learning", "Image Restoration"]
 readingTime: "6 min read"
+archived: true
 ---
 
 ## Introduction

@@ -1,41 +1,34 @@
 ---
-title: "Medical Imaging Denoising Pipeline"
+title: "Generative MRI Restoration"
 year: "2023"
-description: "Production-grade 3D UNet architecture for MRI denoising using MONAI, with HPC training infrastructure and comprehensive evaluation pipelines."
-tags: ["PyTorch", "MONAI", "Medical Imaging", "3D CNNs", "HPC"]
-metric_value: "3D"
-metric_label: "Volumetric Processing"
-featured: false
-order: 0
-highlights:
-  - value: "3D UNet"
-    label: "ARCHITECTURE"
-    text: "Full volumetric context for superior denoising"
-  - value: "MONAI"
-    label: "FRAMEWORK"
-    text: "Production medical imaging infrastructure"
-  - value: "HPC"
-    label: "INFRASTRUCTURE"
-    text: "SLURM cluster training with checkpointing"
+description: "Adapting Stable Diffusion to replace slow, iterative MRI correction with real-time generative inference."
+tags: ["GenAI", "Stable Diffusion", "Medical Imaging", "Research"]
+featured: true
+order: 5
+metrics:
+  - value: "68%"
+    label: "Error Reduction"
+  - value: "1.7x"
+    label: "Signal Clarity"
+---
+homepage_metric_index: 0
 ---
 
-## The Challenge
 
-MRI scans are inherently noisy due to physical acquisition constraints, motion artifacts, and thermal noise. Traditional denoising methods often blur critical anatomical details, making them unsuitable for clinical diagnosis and downstream analysis tasks like segmentation and registration.
+
+## The Challenge
+Magnetic Resonance Imaging (MRI) diagnostic quality is often bottlenecked by hardware limitations, specifically **Rician Noise** and **Bias Fields** (intensity inhomogeneities).
+
+Standard solutions like **N4ITK** rely on slow, iterative CPU algorithms to correct these errors one by one. I investigated if **Generative AI** could act as a "software upgrade" for older scanners, solving both problems instantly.
 
 ## The Solution
+I engineered a **Latent Diffusion Pipeline** that treats MRI correction as a single-pass generative task rather than an iterative optimization problem.
 
-I developed a **comprehensive denoising pipeline** using 3D UNet architectures optimized for medical imaging workflows:
-
-1. **3D Volumetric Processing**: Unlike 2D slice-based approaches, the 3D UNet processes entire volumes, capturing spatial context across all dimensions for superior denoising quality.
-
-2. **MONAI Integration**: Leveraged MONAI's medical imaging transforms, data loaders, and model architectures to build a production-ready pipeline with proper NIfTI handling, intensity normalization, and medical imaging-specific augmentations.
-
-3. **HPC Training Infrastructure**: Built SLURM submission scripts for cluster-based training, enabling efficient multi-GPU training with automatic checkpointing and resumption capabilities.
-
-4. **Comprehensive Evaluation**: Implemented quantitative metrics (PSNR, SSIM) alongside visual quality assessment to validate denoising performance while preserving anatomical structures.
+* **N4-Guided Conditioning:** Engineered a conditioning signal that guides the diffusion model to "see" the clean anatomy through the noise, ensuring medical accuracy is preserved.
+* **Modified Noise Scheduler:** Implemented a custom noise envelope that prevents the model from hallucinating or blurring fine anatomical details—a common failure mode in standard Stable Diffusion.
+* **Physics-Based Training:** Generated synthetic training data that simulates the actual RF coil physics of MRI scanners, ensuring the model works on real-world hardware artifacts.
 
 ## The Impact
-
-The pipeline demonstrates production ML engineering for medical imaging: proper data handling, scalable training infrastructure, and rigorous evaluation. The 3D approach significantly outperforms 2D methods by leveraging full spatial context, making it suitable for clinical research applications where image quality directly impacts diagnostic accuracy.
-
+* **Quality:** Achieved a **68% reduction in structural error** (SSIM) compared to industry-standard baselines, effectively rendering the images "visually identical" to ground truth.
+* **Efficiency:** Converted a multi-step iterative correction process into a **single-shot inference pass**, enabling near real-time image enhancement.
+* **Business Value:** Demonstrated that software-defined correction can compensate for hardware imperfections, potentially reducing the manufacturing cost of MRI receiver coils .

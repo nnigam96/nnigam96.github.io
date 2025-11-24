@@ -5,58 +5,38 @@ import Navbar from '@components/Navbar.astro';
 import BlogTile from '@components/BlogTile.astro';
 
 const allPosts = await getCollection('blog');
-const sortedPosts = allPosts.sort((a, b) => 
+// Filter out archived posts (explicit boolean check)
+const activePosts = allPosts.filter((post) => post.data.archived !== true);
+const sortedPosts = activePosts.sort((a, b) => 
   b.data.date.getTime() - a.data.date.getTime()
 );
 ---
 
 <BaseLayout title="Engineering Log | Nikhil R. Nigam">
-  <div class="container" style="max-width: 1200px;">
-    <Navbar />
+  <Navbar />
 
-    <div class="blog-header">
-      <h1>Engineering Log</h1>
-      <p class="blog-subtitle">Deep dives into system design, ML infrastructure, and production engineering</p>
-    </div>
-
-    <div class="blog-grid">
-      {sortedPosts.map((post) => (
-        <BlogTile
-          title={post.data.title}
-          date={post.data.date}
-          description={post.data.description}
-          tags={post.data.tags}
-          readingTime={post.data.readingTime}
-          url={`/blog/${post.slug}`}
-        />
-      ))}
-    </div>
-
-    <div style="padding-bottom: 6rem;"></div>
+  <div class="page-header">
+    <h1>Engineering Log</h1>
+    <p class="page-subtitle">Deep dives into system design, ML infrastructure, and production engineering.</p>
   </div>
+
+  <div class="blog-grid">
+    {sortedPosts.map((post) => (
+      <BlogTile
+        title={post.data.title}
+        date={post.data.date}
+        description={post.data.description}
+        tags={post.data.tags}
+        readingTime={post.data.readingTime}
+        url={`/blog/${post.slug}`}
+      />
+    ))}
+  </div>
+
+  <div style="padding-bottom: 6rem;"></div>
 </BaseLayout>
 
 <style>
-  .blog-header {
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--line-color);
-  }
-
-  .blog-header h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-main);
-  }
-
-  .blog-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    color: var(--text-muted);
-  }
-
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -66,10 +46,6 @@ const sortedPosts = allPosts.sort((a, b) =>
   @media (max-width: 768px) {
     .blog-grid {
       grid-template-columns: 1fr;
-    }
-
-    .blog-header h1 {
-      font-size: 2rem;
     }
   }
 </style>
