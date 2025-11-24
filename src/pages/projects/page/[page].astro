@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Navbar from '@components/Navbar.astro';
+import ProjectRow from '@components/ProjectRow.astro';
 
 export async function getStaticPaths() {
   const allProjects = await getCollection('projects');
@@ -39,61 +40,74 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 ---
 
 <BaseLayout title={`All Projects - Page ${currentPage} | Nikhil R. Nigam`}>
-  <div class="container" style="max-width: 1200px;">
-    <Navbar />
+  <Navbar />
 
-    <div class="archive-page">
-      <h1>Project Archive</h1>
-
-      {paginatedProjects.map((project) => (
-        <a href={`/projects/${project.slug}`} class="archive-row">
-          <div class="year">{project.data.year}</div>
-          <div>
-            <div class="archive-title">{project.data.title}</div>
-            <p class="archive-desc">{project.data.description}</p>
-          </div>
-          <div class="archive-tags">
-            {project.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        </a>
-      ))}
-
-      {totalPages > 1 && (
-        <nav class="pagination">
-          {currentPage > 1 ? (
-            currentPage === 2 ? (
-              <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
-            ) : (
-              <a href={`/projects/page/${currentPage - 1}`} class="pagination-link pagination-prev">← Previous</a>
-            )
-          ) : (
-            <span class="pagination-link pagination-prev disabled">← Previous</span>
-          )}
-          
-          <div class="pagination-numbers">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
-              if (pageNum === currentPage) {
-                return <span class="pagination-number active">{pageNum}</span>;
-              } else if (pageNum === 1) {
-                return <a href="/projects" class="pagination-number">{pageNum}</a>;
-              } else {
-                return <a href={`/projects/page/${pageNum}`} class="pagination-number">{pageNum}</a>;
-              }
-            })}
-          </div>
-
-          {currentPage < totalPages ? (
-            <a href={`/projects/page/${currentPage + 1}`} class="pagination-link pagination-next">Next →</a>
-          ) : (
-            <span class="pagination-link pagination-next disabled">Next →</span>
-          )}
-        </nav>
-      )}
-    </div>
-
-    <div style="padding-bottom: 6rem;"></div>
+  <div class="page-header">
+    <h1>Project Archive</h1>
+    <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
   </div>
+
+  {paginatedProjects.map((project) => {
+      // Get homepage metric: use metrics array if available, otherwise fallback to legacy fields
+      let metricValue = project.data.metric_value || '';
+      let metricLabel = project.data.metric_label || '';
+      
+      if (project.data.metrics && project.data.metrics.length > 0) {
+        const homepageIndex = project.data.homepage_metric_index ?? 0;
+        const homepageMetric = project.data.metrics[homepageIndex];
+        if (homepageMetric) {
+          metricValue = homepageMetric.value;
+          metricLabel = homepageMetric.label;
+        }
+      }
+
+      return (
+        <ProjectRow 
+          url={`/projects/${project.slug}`}
+          title={project.data.title}
+          year={project.data.year}
+          description={project.data.description}
+          tags={project.data.tags}
+          metric_value={metricValue}
+          metric_label={metricLabel}
+          githubUrl={project.data.github_url}
+        />
+      );
+    })}
+
+  {totalPages > 1 && (
+    <nav class="pagination">
+      {currentPage > 1 ? (
+        currentPage === 2 ? (
+          <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
+        ) : (
+          <a href={`/projects/page/${currentPage - 1}`} class="pagination-link pagination-prev">← Previous</a>
+        )
+      ) : (
+        <span class="pagination-link pagination-prev disabled">← Previous</span>
+      )}
+      
+      <div class="pagination-numbers">
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+          if (pageNum === currentPage) {
+            return <span class="pagination-number active">{pageNum}</span>;
+          } else if (pageNum === 1) {
+            return <a href="/projects" class="pagination-number">{pageNum}</a>;
+          } else {
+            return <a href={`/projects/page/${pageNum}`} class="pagination-number">{pageNum}</a>;
+          }
+        })}
+      </div>
+
+      {currentPage < totalPages ? (
+        <a href={`/projects/page/${currentPage + 1}`} class="pagination-link pagination-next">Next →</a>
+      ) : (
+        <span class="pagination-link pagination-next disabled">Next →</span>
+      )}
+    </nav>
+  )}
+
+  <div style="padding-bottom: 6rem;"></div>
+  <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
 </BaseLayout>
 

@@ -25,13 +25,12 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 <BaseLayout title="All Projects | Nikhil R. Nigam">
   <Navbar />
 
-  <div class="container"> <div class="page-header">
-      <h1>Project Archive</h1>
-      <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
-    </div>
+  <div class="page-header">
+    <h1>Project Archive</h1>
+    <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
+  </div>
 
-    <div class="archive-list">
-      {paginatedProjects.map((project) => {
+  {paginatedProjects.map((project) => {
          // Get homepage metric: use metrics array if available, otherwise fallback to legacy fields
         let metricValue = project.data.metric_value || '';
         let metricLabel = project.data.metric_label || '';
@@ -59,9 +58,8 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
             />
         );
       })}
-    </div>
 
-    {totalPages > 1 && (
+  {totalPages > 1 && (
       <nav class="pagination">
         {currentPage > 1 ? (
           <a href="/projects" class="pagination-link pagination-prev">← Previous</a>
@@ -88,8 +86,7 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
         )}
       </nav>
     )}
-    
-    <div style="padding-bottom: 6rem;"></div>
-    <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
-  </div>
+  
+  <div style="padding-bottom: 6rem;"></div>
+  <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
 </BaseLayout>

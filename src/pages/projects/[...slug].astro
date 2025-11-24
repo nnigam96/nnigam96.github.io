@@ -20,8 +20,7 @@ const { Content } = await entry.render();
 
 <BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
   <Navbar />
-  <div class="case-container">
-    <article class="case-study">
+  <article class="case-study">
       <span class="meta">PROJECT CASE STUDY // {entry.data.year}</span>
       <h1>{entry.data.title}</h1>
 
@@ -61,10 +60,9 @@ const { Content } = await entry.render();
       <div class="case-study-content arithmatex">
         <Content />
       </div>
-    </article>
+  </article>
 
-    <div style="padding-bottom: 6rem;"></div>
-  </div>
+  <div style="padding-bottom: 6rem;"></div>
 </BaseLayout>
 
 <style>

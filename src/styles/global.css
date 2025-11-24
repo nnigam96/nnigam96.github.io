@@ -106,10 +106,11 @@ nav {
 
 .nav-item {
   color: var(--text-muted);
+  transition: color 0.2s;
 }
 
 .nav-item:hover {
-  color: var(--text-main);
+  color: var(--accent);
 }
 
 .back-link {
@@ -656,13 +657,20 @@ footer {
   margin-top: 1rem;
 }
 
+/* TAGS: Clean Label Style (No Background) */
 .tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 8px;
-  border-radius: 2px;
+  color: var(--text-muted); /* Muted color so they don't compete with the button */
+  background: transparent;  /* Removes the "ugly" box */
+  padding: 0;               /* Removes padding */
+  border: none;             /* Removes border */
+  margin-right: 0.8rem;     /* Adds space between tags */
+}
+
+/* Optional: Add a subtle hover effect */
+.tag:hover {
+  color: var(--accent);
 }
 
 /* PAGINATION */
@@ -904,4 +912,44 @@ footer {
 /* Specific fix for Archive page gap only */
 .archive-page .page-header {
   margin-bottom: 0;
+}
+
+
+/* HERO SOCIALS */
+.hero-socials {
+  display: flex;
+  gap: 1rem;
+  margin-left: 0.5rem; /* Space from the buttons */
+  padding-left: 1rem;
+  border-left: 1px solid var(--line-color); /* Nice divider line */
+}
+
+.hero-icon-btn {
+  color: var(--text-muted);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon-btn:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* MOBILE ADJUSTMENT FOR HERO SOCIALS */
+@media (max-width: 768px) {
+  .hero-actions {
+      gap: 1rem;
+  }
+  
+  .hero-socials {
+      width: 100%;
+      justify-content: center;
+      border-left: none;
+      border-top: 1px solid var(--line-color);
+      padding-top: 1rem;
+      margin-left: 0;
+      margin-top: 0.5rem;
+  }
 }

@@ -25,14 +25,13 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
-  <div class="case-container">
-    <Navbar />
+  <Navbar />
 
-    <nav class="blog-post-nav">
-      <a href="/blog" class="back-link">← Back to Blog</a>
-    </nav>
+  <nav class="blog-post-nav">
+    <a href="/blog" class="back-link">← Back to Blog</a>
+  </nav>
 
-    <article class="blog-post blog-content">
+  <article class="blog-post blog-content">
       <div class="blog-post-meta">
         <span class="blog-post-date">{formattedDate}</span>
         <span class="blog-post-reading-time">{entry.data.readingTime}</span>
@@ -44,7 +43,7 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
 
       <div class="blog-post-tags">
         {entry.data.tags.map((tag) => (
-          <span class="blog-tag">{tag}</span>
+          <span class="tag">#{tag}</span>
         ))}
       </div>
 
@@ -66,10 +65,9 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
           </ol>
         </section>
       )}
-    </article>
+  </article>
 
-    <div style="padding-bottom: 6rem;"></div>
-  </div>
+  <div style="padding-bottom: 6rem;"></div>
 </BaseLayout>
 
 <style>
@@ -115,8 +113,8 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
   }
 
   .blog-content {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     padding: 2rem 0;
     font-family: 'Inter', sans-serif;
     color: #e0e0e0;
