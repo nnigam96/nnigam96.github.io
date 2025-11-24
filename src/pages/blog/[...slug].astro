@@ -25,7 +25,7 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={`${entry.data.title} | Nikhil R. Nigam`}>
-  <div class="container" style="max-width: 900px;">
+  <div class="case-container">
     <Navbar />
 
     <nav class="blog-post-nav">
@@ -51,6 +51,21 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
       <div class="blog-post-content arithmatex">
         <Content />
       </div>
+
+      {entry.data.references && entry.data.references.length > 0 && (
+        <section class="blog-references">
+          <h2>References</h2>
+          <ol>
+            {entry.data.references.map((ref) => (
+              <li>
+                <a href={ref.url} target="_blank" rel="noopener noreferrer">
+                  {ref.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
     </article>
 
     <div style="padding-bottom: 6rem;"></div>
@@ -100,9 +115,9 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
   }
 
   .blog-content {
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     font-family: 'Inter', sans-serif;
     color: #e0e0e0;
     line-height: 1.8;
@@ -156,11 +171,13 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
   }
 
   .blog-content img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 900px;
     height: auto;
     border-radius: 8px;
-    margin: 2rem 0;
+    margin: 2rem auto;
     border: 1px solid var(--line-color);
+    display: block;
   }
 
   .blog-content code {
@@ -184,6 +201,28 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
     background: none;
     padding: 0;
     color: var(--text-main);
+  }
+
+  .blog-references {
+    margin-top: 3rem;
+    border-top: 1px solid var(--line-color);
+    padding-top: 2rem;
+  }
+
+  .blog-references h2 {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-references ol {
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+  }
+
+  .blog-references li {
+    margin-bottom: 0.75rem;
   }
 
   @media (max-width: 768px) {

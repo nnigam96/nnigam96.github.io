@@ -5,6 +5,11 @@ description: "Adapting diffusion model architectures for supervised denoising ta
 tags: ["Diffusion Models", "Medical Imaging", "Deep Learning", "Image Restoration"]
 readingTime: "6 min read"
 archived: true
+references:
+  - label: "DDPM Paper"
+    url: "https://arxiv.org/abs/2006.11239"
+  - label: "MONAI Diffusion Denoising Models"
+    url: "https://docs.monai.io/en/stable/overviews/diffusion_models.html"
 ---
 
 ## Introduction

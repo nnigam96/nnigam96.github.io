@@ -5,6 +5,11 @@ description: "Designing reusable MCP servers, tool registries, and schema-driven
 tags: ["Agentic AI", "MCP", "LangChain", "System Design"]
 readingTime: "10 min read"
 archived: true
+references:
+  - label: "Model Context Protocol (MCP)"
+    url: "https://modelcontextprotocol.io/"
+  - label: "LangChain Documentation"
+    url: "https://python.langchain.com/docs/"
 ---
 
 ## The Agentic AI Landscape

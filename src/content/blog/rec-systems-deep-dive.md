@@ -1,9 +1,22 @@
 ---
 title: "Architecting Recommendation Systems: From Startup Velocity to Enterprise Scale"
-date: "2025-01-15"
+date: "2025-11-20"
 description: "A deep dive into the architecture of a production-grade Retrieval System. Lessons learned from engineering sub-second retrieval pipelines for the 'Cold Start' problem."
 tags: ["System Design", "RecSys", "Vector DB", "MLOps", "Engineering"]
 readingTime: "9 min read"
+references:
+  - label: "Milvus Documentation"
+    url: "https://milvus.io/docs"
+  - label: "FAISS: Facebook AI Similarity Search"
+    url: "https://arxiv.org/abs/1702.08734"
+  - label: "A practical guide to building a recommendation system"
+    url: "https://www.databricks.com/blog/guide-to-building-online-recommendation-system"
+  - label: "On Youtube's recommendation system"
+    url: "https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/"
+  - label: "System Design for Recommendations and Search"
+    url: "https://eugeneyan.com/writing/system-design-for-discovery/"
+  - label: "Powered by AI: Instagram’s Explore recommender system"
+    url: "https://instagram-engineering.com/powered-by-ai-instagrams-explore-recommender-system-7ca901d2a882"
 ---
 
 Most machine learning tutorials have a fatal flaw: they end at `model.fit()`.

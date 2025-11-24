@@ -5,6 +5,11 @@ description: "Exploring the trade-offs of running LLMs locally with Ollama, buil
 tags: ["Local LLM", "Ollama", "Privacy", "Edge Computing"]
 readingTime: "7 min read"
 archived: true
+references:
+  - label: "Ollama Documentation"
+    url: "https://ollama.com/docs"
+  - label: "Quantization Techniques for LLMs"
+    url: "https://arxiv.org/abs/2307.09782"
 ---
 
 ## Why Local LLMs Matter

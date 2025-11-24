@@ -7,24 +7,82 @@ export interface Props {
   metric_value: string;
   metric_label: string;
   url: string;
+  githubUrl?: string; // New Prop
 }
 
-const { title, year, description, tags, metric_value, metric_label, url } = Astro.props;
+const { title, year, description, tags, metric_value, metric_label, url, githubUrl } = Astro.props;
 ---
 
-<a href={url} class="project-row">
+<div class="project-row relative-row">
+  
+  <a href={url} class="main-link-overlay" aria-label={`View case study: ${title}`}></a>
+
   <div class="project-year">{year}</div>
+  
   <div class="project-main">
     <h3>{title}</h3>
     <p class="project-desc">{description}</p>
-    <div class="tags">
-      {tags.map((tag) => (
-        <span>#{tag}</span>
-      ))}
+    
+    <div class="tags-actions-row">
+      <div class="tags">
+        {tags.map((tag) => (
+          <span class="tag">#{tag}</span>
+        ))}
+      </div>
+
+      {githubUrl && (
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="github-btn">
+          View Code ↗
+        </a>
+      )}
     </div>
   </div>
+
   <div class="project-stat">
     <span class="stat-number">{metric_value}</span>
     <span class="stat-label">{metric_label}</span>
   </div>
-</a>
+</div>
+
+<style>
+  /* Local CSS for the overlay logic */
+  .relative-row {
+    position: relative;
+    /* Ensure the div behaves like the original grid link */
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .main-link-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .tags-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .github-btn {
+    position: relative;
+    z-index: 2; /* Sits above the overlay */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    background: rgba(245, 158, 11, 0.05);
+    transition: all 0.2s;
+  }
+
+  .github-btn:hover {
+    background: var(--accent);
+    color: #000;
+  }
+</style>

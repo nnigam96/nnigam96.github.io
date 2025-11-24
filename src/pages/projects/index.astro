@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Navbar from '@components/Navbar.astro';
+import ProjectRow from '@components/ProjectRow.astro'; // Import the component
 
 const allProjects = await getCollection('projects');
 // Filter out archived projects (explicit boolean check)
@@ -14,7 +15,7 @@ const sortedProjects = activeProjects.sort((a, b) => {
 
 // Pagination settings
 const pageSize = 8;
-const currentPage = 1;
+const currentPage = 1; // You might need logic here to read page param if doing dynamic pagination
 const totalPages = Math.ceil(sortedProjects.length / pageSize);
 const startIndex = (currentPage - 1) * pageSize;
 const endIndex = startIndex + pageSize;
@@ -24,25 +25,41 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 <BaseLayout title="All Projects | Nikhil R. Nigam">
   <Navbar />
 
-    <div class="page-header">
+  <div class="container"> <div class="page-header">
       <h1>Project Archive</h1>
       <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
     </div>
 
-    {paginatedProjects.map((project) => (
-        <a href={`/projects/${project.slug}`} class="archive-row">
-          <div class="year">{project.data.year}</div>
-          <div>
-            <div class="archive-title">{project.data.title}</div>
-            <p class="archive-desc">{project.data.description}</p>
-          </div>
-          <div class="archive-tags">
-            {project.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        </a>
-      ))}
+    <div class="archive-list">
+      {paginatedProjects.map((project) => {
+         // Get homepage metric: use metrics array if available, otherwise fallback to legacy fields
+        let metricValue = project.data.metric_value || '';
+        let metricLabel = project.data.metric_label || '';
+        
+        if (project.data.metrics && project.data.metrics.length > 0) {
+            // Default to first metric for archive list if specific index not set
+            const homepageIndex = project.data.homepage_metric_index ?? 0;
+            const homepageMetric = project.data.metrics[homepageIndex];
+            if (homepageMetric) {
+            metricValue = homepageMetric.value;
+            metricLabel = homepageMetric.label;
+            }
+        }
+
+        return (
+            <ProjectRow 
+            url={`/projects/${project.slug}`}
+            title={project.data.title}
+            year={project.data.year}
+            description={project.data.description}
+            tags={project.data.tags}
+            metric_value={metricValue}
+            metric_label={metricLabel}
+            githubUrl={project.data.github_url}
+            />
+        );
+      })}
+    </div>
 
     {totalPages > 1 && (
       <nav class="pagination">
@@ -71,5 +88,8 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
         )}
       </nav>
     )}
+    
+    <div style="padding-bottom: 6rem;"></div>
+    <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
   </div>
 </BaseLayout>

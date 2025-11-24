@@ -5,6 +5,11 @@ description: "Practical insights from building multi-modal systems: architecture
 tags: ["Multi-Modal Learning", "Computer Vision", "Deep Learning", "System Design"]
 readingTime: "7 min read"
 archived: true
+references:
+  - label: "Emotic Dataset Paper"
+    url: "https://openaccess.thecvf.com/content_cvpr_2017/papers/Kosti_Emotion_Recognition_in_CVPR_2017_paper.pdf"
+  - label: "Multi-Modal Fusion Survey"
+    url: "https://arxiv.org/abs/1806.05236"
 ---
 
 ## Introduction

@@ -13,6 +13,7 @@ metrics:
   - value: "BLEU Eval"
     label: "Training Loop"
 homepage_metric_index: 0
+github_url: "https://github.com/nnigam96/de_to_en_translator"
 ---
 
 ## The Challenge

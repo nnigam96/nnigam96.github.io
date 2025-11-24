@@ -5,6 +5,11 @@ description: "Lessons learned building production-grade medical imaging pipeline
 tags: ["Medical Imaging", "Production ML", "MONAI", "Healthcare"]
 readingTime: "8 min read"
 archived: true
+references:
+  - label: "MONAI Documentation"
+    url: "https://docs.monai.io/"
+  - label: "NIfTI File Format"
+    url: "https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1"
 ---
 
 ## Introduction
