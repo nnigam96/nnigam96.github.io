@@ -1,22 +1,15 @@
 import { defineConfig } from 'astro/config';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+  // FIX: Ensure this matches your GitHub Pages URL exactly
   site: 'https://nnigam96.github.io',
-  base: '/',
+  
+  // FIX: Remove 'base' unless you are deploying to a subfolder
+  // base: '/', 
+
   output: 'static',
-  vite: {
-    resolve: {
-      alias: {
-        '@components': path.resolve(__dirname, './src/components'),
-        '@layouts': path.resolve(__dirname, './src/layouts'),
-        '@styles': path.resolve(__dirname, './src/styles'),
-        '@assets': path.resolve(__dirname, './src/assets'),
-      },
-    },
-  },
+  
+  // Note: Aliases are best managed in tsconfig.json, but keeping them here
+  // as a fallback for Vite is fine if your build relies on it.
 });
