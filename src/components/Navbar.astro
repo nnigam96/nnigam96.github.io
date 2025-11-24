@@ -63,18 +63,18 @@ const socialItems = [
     const btn = document.querySelector('.hamburger');
     const menu = document.querySelector('.mobile-menu-overlay');
     const body = document.body;
-    
+
     if (!btn || !menu) return;
-    
-    // Remove existing listeners by cloning and replacing
-    const newBtn = btn.cloneNode(true);
-    btn.parentNode?.replaceChild(newBtn, btn);
-    
+
+    // Avoid stacking listeners across page transitions
+    btn.replaceWith(btn.cloneNode(true));
+    const newBtn = document.querySelector('.hamburger');
+
     function toggleMenu() {
-      const isExpanded = newBtn.getAttribute('aria-expanded') === 'true';
-      newBtn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
-      menu.classList.toggle('active');
-      body.style.overflow = !isExpanded ? 'hidden' : '';
+      const expanded = newBtn.getAttribute('aria-expanded') === 'true';
+      newBtn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('active', !expanded);
+      body.style.overflow = !expanded ? 'hidden' : '';
     }
 
     function closeMenu() {
@@ -83,37 +83,26 @@ const socialItems = [
       body.style.overflow = '';
     }
 
-    // Add event listeners
     newBtn.addEventListener('click', toggleMenu);
-    newBtn.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      toggleMenu();
-    });
-    
-    // Close menu when clicking nav items
+
+    // Close on mobile nav taps
     document.querySelectorAll('.mobile-nav-item').forEach(link => {
       link.addEventListener('click', closeMenu);
-      link.addEventListener('touchend', closeMenu);
     });
 
-    // Close menu when clicking overlay
+    // Close when clicking overlay itself
     menu.addEventListener('click', (e) => {
-      if (e.target === menu) closeMenu();
-    });
-    
-    menu.addEventListener('touchend', (e) => {
       if (e.target === menu) closeMenu();
     });
   }
 
-  // Run on initial load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMenu);
   } else {
     initMenu();
   }
 
-  // Re-run on page transitions
+  // Astro page transitions
   document.addEventListener('astro:page-load', initMenu);
 </script>
 
