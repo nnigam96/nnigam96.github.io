@@ -59,39 +59,62 @@ const socialItems = [
 </nav>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function initMenu() {
     const btn = document.querySelector('.hamburger');
     const menu = document.querySelector('.mobile-menu-overlay');
     const body = document.body;
     
     if (!btn || !menu) return;
     
+    // Remove existing listeners by cloning and replacing
     const newBtn = btn.cloneNode(true);
     btn.parentNode?.replaceChild(newBtn, btn);
     
     function toggleMenu() {
       const isExpanded = newBtn.getAttribute('aria-expanded') === 'true';
-      newBtn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-      menu?.classList.toggle('active');
-      body.style.overflow = isExpanded ? '' : 'hidden';
+      newBtn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+      menu.classList.toggle('active');
+      body.style.overflow = !isExpanded ? 'hidden' : '';
     }
 
     function closeMenu() {
       newBtn.setAttribute('aria-expanded', 'false');
-      menu?.classList.remove('active');
+      menu.classList.remove('active');
       body.style.overflow = '';
     }
 
+    // Add event listeners
     newBtn.addEventListener('click', toggleMenu);
+    newBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
     
+    // Close menu when clicking nav items
     document.querySelectorAll('.mobile-nav-item').forEach(link => {
       link.addEventListener('click', closeMenu);
+      link.addEventListener('touchend', closeMenu);
     });
 
+    // Close menu when clicking overlay
     menu.addEventListener('click', (e) => {
       if (e.target === menu) closeMenu();
     });
-  });
+    
+    menu.addEventListener('touchend', (e) => {
+      if (e.target === menu) closeMenu();
+    });
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMenu);
+  } else {
+    initMenu();
+  }
+
+  // Re-run on page transitions
+  document.addEventListener('astro:page-load', initMenu);
 </script>
 
 <style>
@@ -146,11 +169,13 @@ const socialItems = [
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 12px;
     flex-direction: column;
     gap: 6px;
     position: relative; 
     z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   .logo.z-layer { position: relative; z-index: 1001; }
