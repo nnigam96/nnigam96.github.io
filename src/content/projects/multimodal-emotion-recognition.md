@@ -13,6 +13,7 @@ metrics:
   - value: "VAD"
     label: "CONTINUOUS"
 homepage_metric_index: 0
+github_url: "https://github.com/nnigam96/Contextual-Emotion-Recogntion"
 ---
 
 ## The Challenge

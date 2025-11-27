@@ -10,7 +10,7 @@ metrics:
     label: "Error Reduction"
   - value: "1.7x"
     label: "Signal Clarity"
----
+github_url: "https://github.com/nnigam96/MRI_Denoising"
 homepage_metric_index: 0
 ---
 
@@ -31,4 +31,13 @@ I engineered a **Latent Diffusion Pipeline** that treats MRI correction as a sin
 ## The Impact
 * **Quality:** Achieved a **68% reduction in structural error** (SSIM) compared to industry-standard baselines, effectively rendering the images "visually identical" to ground truth.
 * **Efficiency:** Converted a multi-step iterative correction process into a **single-shot inference pass**, enabling near real-time image enhancement.
-* **Business Value:** Demonstrated that software-defined correction can compensate for hardware imperfections, potentially reducing the manufacturing cost of MRI receiver coils .
+* **Business Value:** Demonstrated that software-defined correction can compensate for hardware imperfections, potentially reducing the manufacturing cost of MRI receiver coils.
+
+---
+
+**Note:** Experiments and implementations for this project are scattered across multiple repositories:
+- [MRI_Denoising](https://github.com/nnigam96/MRI_Denoising) - Main repository (2D/3D implementations)
+- [nn_MONAI](https://github.com/nnigam96/nn_MONAI) - MONAI-based 3D UNet experiments for volumetric denoising
+- [DDM2](https://github.com/nnigam96/DDM2) - Self-supervised diffusion model for MRI denoising (custom modifications)
+- [SupervisedDiffusion](https://github.com/nnigam96/SupervisedDiffusion) - Supervised diffusion models for paired noisy-clean MRI data
+- [MRI_Denoising_Old](https://github.com/nnigam96/MRI_Denoising_Old) - Legacy PyTorch Lightning implementation with UNet architectures
