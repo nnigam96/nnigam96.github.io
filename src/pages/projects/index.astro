@@ -23,10 +23,10 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
 ---
 
 <BaseLayout title="All Projects | Nikhil R. Nigam">
-  <Navbar />
+    <Navbar />
 
   <div class="page-header">
-    <h1>Project Archive</h1>
+      <h1>Project Archive</h1>
     <p class="page-subtitle">Shipping-grade ML systems spanning recommendation engines, agentic platforms, and privacy-first LLM stacks.</p>
   </div>
 
@@ -77,7 +77,7 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
               return <a href={`/projects/page/${pageNum}`} class="pagination-number">{pageNum}</a>;
             }
           })}
-        </div>
+    </div>
 
         {currentPage < totalPages ? (
           <a href={`/projects/page/${currentPage + 1}`} class="pagination-link pagination-next">Next →</a>
@@ -86,7 +86,7 @@ const paginatedProjects = sortedProjects.slice(startIndex, endIndex);
         )}
       </nav>
     )}
-  
-  <div style="padding-bottom: 6rem;"></div>
+
+    <div style="padding-bottom: 6rem;"></div>
   <footer><span>© 2025 NIKHIL R. NIGAM</span></footer>
 </BaseLayout>
