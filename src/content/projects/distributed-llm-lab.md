@@ -4,13 +4,13 @@ year: "2025"
 description: "Production-grade monorepo for distributed large language model systems: federated learning, speculative decoding, split inference, and distributed training."
 tags: ["PyTorch", "Distributed Systems", "LLMs", "System Design", "Research"]
 metrics:
-  - value: "4"
-    label: "Sub-Projects"
-  - value: "Raw TCP"
-    label: "Protocol"
-  - value: "Under Dev"
-    label: "Status"
-featured: false
+metrics:
+  - value: "82%"
+    label: "Draft Alignment"       # Focus: Probability & Model Distillation
+  - value: "O(1)"
+    label: "Attention Complexity"
+featured: true
+
 order: 7
 homepage_metric_index: 0
 github_url: "https://github.com/nnigam96/distributed-llm-lab"
@@ -25,7 +25,7 @@ This project is a comprehensive research and engineering lab exploring distribut
 **"We are not writing scripts. We are engineering systems."**
 
 The codebase enforces:
-- **Strict Typing**: Comprehensive Pydantic models and type hints throughout
+- **Strict Typing**: Strict configuration management using Hydra Structured Configs and comprehensive Python type hinting.
 - **Config-Driven**: All configuration managed through Hydra (.yaml files), zero hardcoded values
 - **Observability**: Comprehensive metrics and logging via Weights & Biases
 - **High-Performance Networking**: Raw TCP sockets with binary protocol (struct packing) for minimal latency
@@ -47,7 +47,7 @@ Implements Federated Averaging (FedAvg) where a central coordinator aggregates L
 
 **Philosophy**: "Latency is the sum of compute time + transmission time. Minimize both."
 
-Implements speculative sampling where a "Draft Model" (Mac) produces token candidates cheaply, and the "Target Model" (Windows) verifies them in parallel. Uses raw TCP sockets with struct packing for minimal latency—HTTP is too slow. Asyncio-ready design for non-blocking I/O while GPU computes.
+Implements speculative sampling where a "Draft Model" (Mac) produces token candidates cheaply, and the "Target Model" (Windows) verifies them in parallel. Uses raw TCP sockets with struct packing for minimal latency—HTTP. Implemented a custom Producer-Consumer protocol using non-blocking socket patterns and TCP_NODELAY to minimize round-trip latency.
 
 **Key Components**:
 - Binary packet structure with `send_msg()`, `recv_msg()`, `send_tokens()`, `recv_tokens()`
@@ -56,7 +56,7 @@ Implements speculative sampling where a "Draft Model" (Mac) produces token candi
 
 **Metrics**: Wall-clock speedup (Total Time / Total Tokens), Alpha (Acceptance Rate)
 
-### 3. Split Inference ("The Heavy Lifter")
+### 3. Split Inference (In Progress) ("The Heavy Lifter")
 
 **Philosophy**: "VRAM is a hard constraint. Network bandwidth is a soft constraint. Trade one for the other."
 
@@ -70,7 +70,7 @@ Enables running models larger than the VRAM of a single device (e.g., Llama-70B 
 
 **Metrics**: Inference latency per token, VRAM utilization per node
 
-### 4. Split Training ("The Moonshot")
+### 4. Split Training (In Progress) ("The Moonshot")
 
 **Philosophy**: "Gradient descent is just chain rule. The chain rule doesn't care if the variables are on different continents."
 
@@ -96,10 +96,13 @@ Enables backpropagation across the network split defined in Split Inference. Use
 - Project-specific overrides (spec_decoding, fed_learn, split_inf)
 
 **Code Quality**: Production-grade standards
-- Comprehensive type hints with Pydantic
+- Comprehensive type hints with Hydra Structured Configs
 - Memory efficiency and low latency design
 - Proper data flow and scalability
 - Makefile targets for format, lint, test
+
+**Automated Forensic Analysis**:
+Includes a custom orchestration engine (`run_matrix.py`) that performs grid searches across hardware configurations (Context Window vs. Batch Size), automatically visualizing trade-offs via Seaborn heatmaps.
 
 ## Technical Stack
 
@@ -107,7 +110,7 @@ Enables backpropagation across the network split defined in Split Inference. Use
 - **Networking**: Raw TCP sockets, struct packing, asyncio
 - **Configuration**: Hydra
 - **Observability**: Weights & Biases
-- **Type Safety**: Pydantic, comprehensive type hints
+- **Type Safety**: Hydra Structured Configs, comprehensive type hints
 - **Device Support**: Apple Silicon (MPS), CUDA, automatic detection
 
 ## Current Status
