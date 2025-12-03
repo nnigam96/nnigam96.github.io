@@ -4,7 +4,6 @@ year: "2025"
 description: "Production-grade monorepo for distributed large language model systems: federated learning, speculative decoding, split inference, and distributed training."
 tags: ["PyTorch", "Distributed Systems", "LLMs", "System Design", "Research"]
 metrics:
-metrics:
   - value: "82%"
     label: "Draft Alignment"       # Focus: Probability & Model Distillation
   - value: "O(1)"
