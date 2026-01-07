@@ -1,0 +1,377 @@
+---
+/* DigitalTwin.astro */
+/* Narrative: The 'System Kernel' that bridges the gap between research and production. */
+---
+<div id="twin-island" class="twin-container closed">
+    <button id="twin-toggle" class="twin-launcher" aria-label="Open Digital Twin">
+        <span class="status-dot"></span>
+        <span class="launcher-text">TWIN_PROMPT [ONLINE]</span>
+    </button>
+
+    <div class="twin-window">
+        <div class="twin-header">
+            <div class="header-info">
+                <span class="prefix">#</span> <strong>NIKHIL_TWIN_V1.0</strong>
+                <span class="kernel-status">[KERNEL: STABLE]</span>
+            </div>
+            <button id="twin-close" title="Close Session">0x00</button>
+        </div>
+        
+        <div id="twin-messages" class="twin-messages">
+            <div class="msg bot" style="color: #FFB800;">
+                <span class="msg-meta">SYSTEM:</span>
+                <div class="msg-content" style="color: #FFB800;">Initialization complete. I have indexed Nikhil's project vault and production history. Ready for query.</div>
+            </div>
+        </div>
+
+        <div id="twin-loading" class="loading-indicator hidden">
+            <span class="cursor">_</span> PROCESSING_REQUEST
+        </div>
+
+        <div class="twin-input-area">
+            <span class="prompt-char">>></span>
+            <input 
+                type="text" 
+                id="twin-input" 
+                placeholder="Enter query..." 
+                autocomplete="off"
+                spellcheck="false"
+            />
+        </div>
+    </div>
+</div>
+
+<style>
+    .twin-container {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 9999;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .twin-container.closed {
+        pointer-events: none;
+    }
+    
+    .twin-container.closed .twin-launcher {
+        pointer-events: auto;
+    }
+
+    .twin-launcher {
+        background: #121212;
+        color: #fff;
+        border: 1px solid #333;
+        padding: 0.6rem 1.2rem;
+        border-radius: 2px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        transition: all 0.2s ease;
+    }
+
+    .twin-launcher:hover {
+        border-color: #FFB800;
+        box-shadow: 0 0 15px rgba(255, 184, 0, 0.1);
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
+        background: #00FF00;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00FF00;
+    }
+
+    .twin-window {
+        display: none;
+        width: 400px;
+        height: 520px;
+        background: #0A0A0A;
+        border: 1px solid #333;
+        flex-direction: column;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    }
+
+    .twin-container:not(.closed) .twin-window { display: flex; }
+    .twin-container:not(.closed) .twin-launcher { display: none; }
+
+    .twin-header {
+        padding: 0.8rem 1rem;
+        background: #111;
+        border-bottom: 1px solid #222;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.65rem;
+        color: #666;
+    }
+
+    .prefix { color: #FFB800; }
+    .kernel-status { margin-left: 10px; color: #00FF00; opacity: 0.8; }
+    
+    #twin-close { 
+        background: none; 
+        border: 1px solid #333; 
+        color: #666; 
+        padding: 2px 6px; 
+        font-size: 0.6rem; 
+        cursor: pointer;
+    }
+
+    #twin-close:hover { border-color: #ff4444; color: #ff4444; }
+
+    .twin-messages {
+        flex: 1;
+        padding: 1.5rem 1rem;
+        overflow-y: auto;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        scrollbar-width: thin;
+        scrollbar-color: #333 #0A0A0A;
+    }
+
+    /* All messages have consistent structure */
+    .msg {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Meta tags (SYSTEM: and USER:) - consistent size, bold, amber */
+    .msg-meta { 
+        color: #FFB800; 
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Message content */
+    .msg-content {
+        line-height: 1.6;
+    }
+
+    /* User messages - high contrast white with amber border */
+    .msg.user { 
+        border-left: 2px solid #FFB800; 
+        padding-left: 12px;
+        align-self: flex-start;
+    }
+
+    .msg.user .msg-content {
+        color: #F7F7F7;
+    }
+
+    .twin-input-area {
+        padding: 1rem;
+        border-top: 1px solid #222;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #000;
+    }
+
+    .prompt-char { color: #FFB800; font-weight: bold; }
+
+    #twin-input {
+        background: transparent;
+        border: none;
+        color: #F7F7F7;
+        flex: 1;
+        font-size: 0.8rem;
+        outline: none;
+        font-family: inherit;
+    }
+
+    #twin-input::placeholder {
+        color: #666;
+    }
+
+    .loading-indicator { 
+        padding: 0 1rem 1rem 1rem; 
+        font-size: 0.7rem; 
+        color: #FFB800; 
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cursor { animation: blink 1s infinite; }
+    @keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+    .hidden { display: none; }
+</style>
+
+<script>
+    function initTwin() {
+        console.log('initTwin called');
+        
+        const container = document.getElementById('twin-island');
+        const launcher = document.getElementById('twin-toggle');
+        const closeBtn = document.getElementById('twin-close');
+        const input = document.getElementById('twin-input');
+        const chat = document.getElementById('twin-messages');
+        const loader = document.getElementById('twin-loading');
+
+        console.log('Elements:', { container: !!container, launcher: !!launcher, input: !!input });
+
+        if (!launcher || !input || !container) {
+            console.error('Missing required elements');
+            return;
+        }
+
+        const API_URL = "http://localhost:8000/query"; 
+        const API_KEY = "UqF2XT3DeUD9-MAEDOKvE4W2PjTkz4TFNOx6_kA3SnY";
+
+        // Restore chat state from sessionStorage
+        function restoreChatState() {
+            const savedState = sessionStorage.getItem('twin-chat-state');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                
+                // Restore open/closed state
+                if (state.isOpen) {
+                    container.classList.remove('closed');
+                } else {
+                    container.classList.add('closed');
+                }
+                
+                // Restore chat history
+                if (state.chatHistory) {
+                    chat.innerHTML = state.chatHistory;
+                }
+            }
+        }
+
+        // Save chat state to sessionStorage
+        function saveChatState() {
+            const state = {
+                isOpen: !container.classList.contains('closed'),
+                chatHistory: chat.innerHTML
+            };
+            sessionStorage.setItem('twin-chat-state', JSON.stringify(state));
+        }
+
+        // Restore state on initialization
+        restoreChatState();
+
+        launcher.onclick = (e) => {
+            console.log('Launcher clicked');
+            e.stopPropagation();
+            container.classList.remove('closed');
+            saveChatState();
+            setTimeout(() => {
+                input.focus();
+                console.log('Input focused, activeElement:', document.activeElement);
+            }, 100);
+        };
+
+        closeBtn.onclick = (e) => {
+            console.log('Close clicked');
+            e.stopPropagation();
+            container.classList.add('closed');
+            saveChatState();
+        };
+
+        // Debug event listeners
+        input.addEventListener('focus', () => console.log('Input focused!'));
+        input.addEventListener('keydown', (e) => console.log('Keydown:', e.key));
+        input.addEventListener('input', (e) => console.log('Input value:', e.target.value));
+
+        async function handleSend() {
+            const query = input.value.trim();
+            console.log('handleSend:', query);
+            if (!query) return;
+
+            // Add user message with consistent structure
+            chat.innerHTML += `
+                <div class="msg user">
+                    <span class="msg-meta" style="font-size: 0.6rem;">USER:</span>
+                    <div class="msg-content">${query}</div>
+                </div>`;
+            
+            input.value = "";
+            chat.scrollTop = chat.scrollHeight;
+            loader.classList.remove('hidden');
+            saveChatState(); // Save after adding user message
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json", 
+                        "X-API-KEY": API_KEY 
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                loader.classList.add('hidden');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    // Add bot response with inline style to force amber color
+                    chat.innerHTML += `
+                        <div class="msg bot" style="color: #FFB800;">
+                            <span class="msg-meta" style="font-size: 0.6rem;">SYSTEM:</span>
+                            <div class="msg-content" style="color: #FFB800;">${data.response}</div>
+                        </div>`;
+                } else {
+                    chat.innerHTML += `
+                        <div class="msg bot" style="color: #FFB800;">
+                            <span class="msg-meta" style="font-size: 0.6rem;">SYSTEM:</span>
+                            <div class="msg-content" style="color: #ff4444;">ERR: SYSTEM_OVERLOAD [Code ${response.status}]</div>
+                        </div>`;
+                }
+            } catch (err) {
+                console.error('Fetch error:', err);
+                loader.classList.add('hidden');
+                chat.innerHTML += `
+                    <div class="msg bot" style="color: #FFB800;">
+                        <span class="msg-meta" style="font-size: 0.6rem;">SYSTEM:</span>
+                        <div class="msg-content" style="color: #ff4444;">ERR: BACKEND_UNREACHABLE</div>
+                    </div>`;
+            }
+            chat.scrollTop = chat.scrollHeight;
+            saveChatState(); // Save after adding bot response
+        }
+
+        input.onkeypress = (e) => {
+            if (e.key === 'Enter') {
+                handleSend();
+            }
+        };
+
+        console.log('Twin initialized successfully');
+    }
+    
+    // Initialize on both load and Astro page transitions
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTwin);
+    } else {
+        initTwin();
+    }
+    
+    document.addEventListener('astro:page-load', initTwin);
+    
+    // Save state before navigating away
+    document.addEventListener('astro:before-swap', () => {
+        const container = document.getElementById('twin-island');
+        const chat = document.getElementById('twin-messages');
+        
+        if (container && chat) {
+            const state = {
+                isOpen: !container.classList.contains('closed'),
+                chatHistory: chat.innerHTML
+            };
+            sessionStorage.setItem('twin-chat-state', JSON.stringify(state));
+        }
+    });
+</script>

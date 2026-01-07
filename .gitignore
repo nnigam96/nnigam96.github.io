@@ -134,3 +134,8 @@ dist/
 node_modules/
 .astro/
 dist/
+
+#Current CURRENT_STATE. 
+CURRENT_STATE.md
+
+.DS_Store

@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-// CORRECT IMPORT FOR ASTRO v4
 import { ViewTransitions } from 'astro:transitions';
+import DigitalTwin from '@components/DigitalTwin.astro';
 
 interface Props {
   title: string;
@@ -15,14 +15,14 @@ const { title } = Astro.props;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://localhost:8000;">
     <title>{title}</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
-    <!-- MathJax for LaTeX rendering -->
-    <script>
+    <script is:inline>
       window.MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -39,8 +39,8 @@ const { title } = Astro.props;
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
-    <script>
-      // Re-process MathJax after ViewTransitions
+    <script is:inline>
+      // Unified initialization for MathJax and other islands
       document.addEventListener('astro:page-load', () => {
         if (window.MathJax && window.MathJax.typesetPromise) {
           window.MathJax.typesetPromise();
@@ -51,19 +51,25 @@ const { title } = Astro.props;
     <ViewTransitions />
 </head>
 <body>
-    <div class="container">
+    
+    <main class="container">
         <slot />
-    </div>
+    </main>
+
+    <DigitalTwin />
 </body>
 </html>
 
 <style is:global>
-    /* CRITICAL FIX: 
-       This forces the browser to always reserve space for the scrollbar.
-       This stops your content from jumping left/right when moving 
-       between short pages (Home) and long pages (Projects).
-    */
+    /* Prevent layout shift between short and long pages */
     html {
         scrollbar-gutter: stable;
+    }
+
+    /* System Kernel Theme Global Variables */
+    :root {
+        --font-body: 'Inter', sans-serif;
+        --font-heading: 'Space Grotesk', sans-serif;
+        --font-code: 'JetBrains Mono', monospace;
     }
 </style>
