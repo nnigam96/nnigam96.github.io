@@ -14,6 +14,8 @@ homepage_metric_index: 1
 featured: false
 order: 8
 github_url: "https://github.com/nnigam96/night-shift"
+stack_category: ["Agentic AI", "Information Retrieval", "Privacy & Security", "MLOps & Infrastructure"]
+retrieval_hooks: ["Architected LangGraph state machine with asynchronous workflow for agentic email processing", "Implemented local FAISS vector store for privacy-preserving email history retrieval", "Built batch layer with mbox parser and janitor pipeline for email preprocessing", "Designed speed layer with Azure AD OAuth for incremental email synchronization"]
 ---
 
 > **Status:** Under active development. The initial skeleton already runs end-to-end on Apple Silicon; the public dashboard is being polished.

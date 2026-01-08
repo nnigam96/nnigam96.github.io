@@ -10,6 +10,8 @@ metrics:
     label: "Catalog Expansion"
 featured: true
 order: 1
+stack_category: ["Recommendation Systems", "MLOps & Infrastructure", "Vector Databases", "System Design"]
+retrieval_hooks: ["Architected a two-stage retrieval pipeline using Milvus with HNSW indexing", "Optimized ANN search latency for multi-tenant environments with logical partitioning", "Implemented meta-feature extraction pipeline for cold-start recommendation scenarios", "Designed weighted aggregation strategy for federated learning across distributed nodes"]
 ---
 
 ## The Challenge

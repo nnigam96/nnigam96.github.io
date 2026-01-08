@@ -13,6 +13,8 @@ metrics:
   - value: "Clinical"
     label: "VARIABLES"
 homepage_metric_index: 0
+stack_category: ["Deep Learning", "Healthcare ML", "Multi-Modal Learning", "Predictive Modeling"]
+retrieval_hooks: ["Developed multi-modal fusion architecture combining CT imaging features with clinical variables", "Implemented neural network models for biological age regression and mortality risk classification", "Designed proper data preprocessing pipeline for medical imaging with train/validation/test stratification", "Built extensible framework supporting multiple healthcare prediction tasks"]
 ---
 
 ## The Challenge

@@ -13,6 +13,8 @@ featured: true
 order: 7
 homepage_metric_index: 0
 github_url: "https://github.com/nnigam96/distributed-llm-lab"
+stack_category: ["Deep Learning", "Distributed Systems", "MLOps & Infrastructure", "System Design"]
+retrieval_hooks: ["Implemented speculative decoding with raw TCP sockets and binary protocol for minimal latency", "Architected federated learning pipeline using Flower with weighted aggregation by dataset size", "Designed split inference system using torch.distributed.rpc for cross-device model execution", "Built automated forensic analysis engine with grid search across hardware configurations"]
 ---
 
 ## Status: Under Active Development

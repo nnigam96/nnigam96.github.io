@@ -10,6 +10,8 @@ metrics:
     label: "No dataloss in migration"
 featured: false
 order: 6
+stack_category: ["MLOps & Infrastructure", "Data Engineering", "System Design"]
+retrieval_hooks: ["Built retroactive continuity pipeline for migrating ML artifacts from legacy experiment tracking systems", "Developed crawlers to systematically extract checkpoints, metrics, and configs from W&B histories", "Designed batch processing engine rehydrating models through modern feature extraction pipeline", "Implemented unified ingestion system creating single source of truth with full lineage in MLflow"]
 ---
 
 ## The Challenge

@@ -11,6 +11,8 @@ metrics:
   - value: "LangChain"
     label: "Reusable Tools"
 homepage_metric_index: 0
+stack_category: ["Agentic AI", "Backend Engineering", "MLOps & Infrastructure", "Data Engineering"]
+retrieval_hooks: ["Designed schema-driven MCP server architecture for type-safe agent tooling", "Implemented LangChain-based data aggregator agent with SQL templating", "Built automatic context window management with schema proto compression", "Created centralized tool registry with JSON schema validation for agent capabilities"]
 ---
 
 ## The Challenge

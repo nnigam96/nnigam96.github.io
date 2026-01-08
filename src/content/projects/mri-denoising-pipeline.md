@@ -12,6 +12,8 @@ metrics:
     label: "Signal Clarity"
 github_url: "https://github.com/nnigam96/MRI_Denoising"
 homepage_metric_index: 0
+stack_category: ["Deep Learning", "Computer Vision", "Medical Imaging", "Generative AI"]
+retrieval_hooks: ["Engineered latent diffusion pipeline treating MRI correction as single-pass generative task", "Implemented N4-guided conditioning signal for preserving medical accuracy in denoising", "Designed custom noise scheduler preventing hallucination of fine anatomical details", "Generated synthetic training data simulating RF coil physics for real-world hardware artifacts"]
 ---
 
 

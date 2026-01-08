@@ -17,6 +17,8 @@ references:
     url: "https://eugeneyan.com/writing/system-design-for-discovery/"
   - label: "Powered by AI: Instagram’s Explore recommender system"
     url: "https://instagram-engineering.com/powered-by-ai-instagrams-explore-recommender-system-7ca901d2a882"
+stack_category: ["Recommendation Systems", "System Design", "MLOps & Infrastructure", "Vector Databases"]
+retrieval_hooks: ["Architected funnel-based recommendation system with candidate generation and ranking services", "Implemented two-stage retrieval pattern using Milvus with HNSW indexing for approximate search", "Designed logical partitioning strategy for multi-tenant data isolation with fallback to community partitions", "Built retroactive continuity pipeline for automated meta-feature extraction from historical experiments"]
 ---
 
 Most machine learning tutorials have a fatal flaw: they end at `model.fit()`.

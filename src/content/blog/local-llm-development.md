@@ -10,6 +10,8 @@ references:
     url: "https://ollama.com/docs"
   - label: "Quantization Techniques for LLMs"
     url: "https://arxiv.org/abs/2307.09782"
+stack_category: ["Edge Computing", "Privacy & Security", "MLOps & Infrastructure", "Deep Learning"]
+retrieval_hooks: ["Architected privacy-first compliance workflow using Ollama for local LLM inference", "Integrated EasyOCR with local LLMs for structured document extraction without data egress", "Designed resource-efficient deployment strategy with quantization for consumer hardware", "Implemented hybrid approach balancing local models for privacy-sensitive tasks with cloud alternatives"]
 ---
 
 ## Why Local LLMs Matter

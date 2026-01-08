@@ -12,6 +12,8 @@ metrics:
 featured: False
 order: 3
 github_url: "https://github.com/nnigam96/doc_assist"
+stack_category: ["Information Retrieval", "Deep Learning", "MLOps & Infrastructure", "Privacy & Security"]
+retrieval_hooks: ["Architected hybrid retrieval engine combining FAISS semantic search with BM25 keyword matching", "Implemented real-time file system watcher for automatic document re-indexing", "Integrated llama-cpp-python with quantized LLaMA 2 models for local inference", "Designed session management with automatic context window reset to prevent memory bloat"]
 ---
 
 ## The Challenge

@@ -14,6 +14,8 @@ metrics:
     label: "CONTINUOUS"
 homepage_metric_index: 0
 github_url: "https://github.com/nnigam96/Contextual-Emotion-Recogntion"
+stack_category: ["Deep Learning", "Computer Vision", "Multi-Modal Learning", "Neural Networks"]
+retrieval_hooks: ["Implemented dual-branch architecture with ResNet encoders for body pose and scene context", "Designed multi-task learning system predicting 26 discrete emotions and continuous VAD dimensions", "Integrated YOLO person detection for bounding box extraction in complex scenes", "Built dynamic loss weighting mechanism balancing categorical and regression objectives"]
 ---
 
 ## The Challenge

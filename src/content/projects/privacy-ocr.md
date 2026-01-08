@@ -9,6 +9,8 @@ metrics:
   - value: "100%"
     label: "Local Inference"
 homepage_metric_index: 0
+stack_category: ["Computer Vision", "Privacy & Security", "Edge Computing", "Agentic AI"]
+retrieval_hooks: ["Built hybrid OCR pipeline combining EasyOCR with local Ollama LLMs for structured extraction", "Designed edge-first architecture ensuring zero data egress for sensitive PII processing", "Implemented custom agent for grounded reasoning about document content without cloud dependencies", "Created orchestration layer for parsing messy OCR output into valid JSON schemas"]
 ---
 
 ## The Challenge

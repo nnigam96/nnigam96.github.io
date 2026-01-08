@@ -10,6 +10,8 @@ references:
     url: "https://docs.monai.io/"
   - label: "NIfTI File Format"
     url: "https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1"
+stack_category: ["Medical Imaging", "MLOps & Infrastructure", "Deep Learning", "Healthcare ML"]
+retrieval_hooks: ["Built production-grade medical imaging pipeline using MONAI for NIfTI handling and transforms", "Designed HPC training infrastructure with SLURM scripts for 3D volumetric model training", "Implemented checkpointing and resumption strategies for multi-day training runs", "Architected multi-modal fusion system combining CT imaging with clinical variables for biological age prediction"]
 ---
 
 ## Introduction

@@ -10,6 +10,8 @@ metrics:
     label: "Signal Accuracy vs SOTA"
 featured: true
 order: 7
+stack_category: ["Deep Learning", "Wireless Communication", "Computer Vision", "Research"]
+retrieval_hooks: ["Engineered 3D fully convolutional autoencoder for variable-sized channel matrix compression", "Implemented dynamic padding strategy scaling inputs to nearest pooling factor for computational efficiency", "Designed custom scaledMSE loss function with binary masking for sub-carrier optimization", "Integrated Convolutional Block Attention Modules (CBAM) for autonomous feature prioritization"]
 ---
 
 ## The Challenge

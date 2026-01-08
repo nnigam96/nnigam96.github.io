@@ -8,6 +8,8 @@ metric_label: "Schema Mapping"
 featured: false
 archived: true
 order: 4
+stack_category: ["Data Engineering", "Agentic AI", "Backend Engineering"]
+retrieval_hooks: ["Built agentic data pipeline with deterministic tools for unit conversion and entity matching", "Implemented context-aware mapping using domain-specific context files for schema standardization", "Designed audit trail logging system capturing transformation decisions for expert review", "Created library of atomic functions for QC checks and intelligent data normalization"]
 ---
 
 ## The Context

@@ -14,6 +14,8 @@ metrics:
     label: "Training Loop"
 homepage_metric_index: 0
 github_url: "https://github.com/nnigam96/de_to_en_translator"
+stack_category: ["Deep Learning", "NLP", "Sequence-to-Sequence Learning", "Backend Engineering"]
+retrieval_hooks: ["Built custom transformer architecture with encoder-decoder design from scratch", "Implemented proper tokenization and vocabulary management for variable-length sequences", "Designed modular training loop with BLEU score evaluation during training", "Deployed Flask REST API with Python package integration for production inference"]
 ---
 
 ## The Challenge

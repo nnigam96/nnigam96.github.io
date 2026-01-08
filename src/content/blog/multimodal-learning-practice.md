@@ -10,6 +10,8 @@ references:
     url: "https://openaccess.thecvf.com/content_cvpr_2017/papers/Kosti_Emotion_Recognition_in_CVPR_2017_paper.pdf"
   - label: "Multi-Modal Fusion Survey"
     url: "https://arxiv.org/abs/1806.05236"
+stack_category: ["Deep Learning", "Multi-Modal Learning", "Computer Vision", "Neural Networks"]
+retrieval_hooks: ["Implemented late fusion architecture with separate encoders for heterogeneous modality processing", "Designed multi-task learning system combining discrete classification with continuous regression", "Built dynamic loss weighting mechanism balancing multiple objectives across modalities", "Architected modality alignment strategies for handling missing data in production systems"]
 ---
 
 ## Introduction

@@ -10,6 +10,8 @@ references:
     url: "https://modelcontextprotocol.io/"
   - label: "LangChain Documentation"
     url: "https://python.langchain.com/docs/"
+stack_category: ["Agentic AI", "System Design", "MLOps & Infrastructure", "Backend Engineering"]
+retrieval_hooks: ["Designed reusable MCP server architecture with centralized tool registry and schema validation", "Implemented context management system for efficient conversation history and state handling", "Built error recovery mechanisms with graceful degradation for tool failures", "Architected schema-driven development pattern using JSON Schema for type-safe client libraries"]
 ---
 
 ## The Agentic AI Landscape

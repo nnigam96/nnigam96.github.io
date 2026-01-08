@@ -10,6 +10,8 @@ references:
     url: "https://arxiv.org/abs/2006.11239"
   - label: "MONAI Diffusion Denoising Models"
     url: "https://docs.monai.io/en/stable/overviews/diffusion_models.html"
+stack_category: ["Deep Learning", "Generative AI", "Medical Imaging", "Computer Vision"]
+retrieval_hooks: ["Adapted MONAI diffusion denoising models for supervised training on paired noisy-clean data", "Implemented deterministic single-step inference replacing multi-step diffusion sampling", "Designed custom noise schedule optimized for medical imaging preservation", "Leveraged diffusion architecture residual connections and attention mechanisms for supervised tasks"]
 ---
 
 ## Introduction
