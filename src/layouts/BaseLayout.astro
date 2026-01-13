@@ -15,7 +15,7 @@ const { title } = Astro.props;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://localhost:8000;">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://localhost:8000 https://nnigam96-portfolio.goatcounter.com https://gc.zgo.at;">
     <title>{title}</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,9 @@ const { title } = Astro.props;
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
+
+    <script data-goatcounter="https://nnigam96-portfolio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <script is:inline>
       // Unified initialization for MathJax and other islands
       document.addEventListener('astro:page-load', () => {

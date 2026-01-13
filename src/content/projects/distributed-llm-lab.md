@@ -48,7 +48,7 @@ Implements Federated Averaging (FedAvg) where a central coordinator aggregates L
 
 **Philosophy**: "Latency is the sum of compute time + transmission time. Minimize both."
 
-Implements speculative sampling where a "Draft Model" (Mac) produces token candidates cheaply, and the "Target Model" (Windows) verifies them in parallel. Uses raw TCP sockets with struct packing for minimal latency—HTTP. Implemented a custom Producer-Consumer protocol using non-blocking socket patterns and TCP_NODELAY to minimize round-trip latency.
+Implements speculative sampling where a "Draft Model" (Mac) produces token candidates cheaply, and the "Target Model" (Windows) verifies them in parallel. Uses raw TCP sockets with struct packing for minimal latency. Implemented a custom Producer-Consumer protocol using non-blocking socket patterns and TCP_NODELAY to minimize round-trip latency.
 
 **Key Components**:
 - Binary packet structure with `send_msg()`, `recv_msg()`, `send_tokens()`, `recv_tokens()`

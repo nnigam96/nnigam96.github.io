@@ -14,11 +14,11 @@ import Navbar from '../components/Navbar.astro';
     <div class="about-hero">
             <div class="about-text">
                 <p class="bio-text">
-                    I am a Machine Learning Engineer with five years of experience building intelligent systems that work at scale. My expertise spans the "messy middle" of AI—bridging the gap between research notebooks and high-availability production systems.
+                    I am a Machine Learning Engineer with five years of experience building intelligent systems that work at scale. My expertise spans the "messy middle" of AI, bridging the gap between research notebooks and high-availability production systems.
                     <br><br>
-                    At Modlee, I architected the backend infrastructure for recommendation engines and agentic workflows, focusing on System Design, Privacy-First AI, and Scalable MLOps.
+                    As the second engineering hire at Modlee (Techstars '23), I built the ML infrastructure from the ground up. Starting as the solo ML engineer, I architected the core recommendation engine, agentic AI platform, and privacy-preserving systems that became the product's technical foundation. My work spanned MLOps, deep learning, agentic development, and healthcare privacy engineering.
                     <br><br>
-                    My journey began in software engineering at Vodafone, where I built financial systems for 5,000+ employees. I then transitioned to AI research at UW-Madison and InterDigital, developing novel deep learning architectures for wireless compression. This blend of enterprise rigor and research depth defines my engineering approach.
+                    My journey began in software engineering at Vodafone, where I built financial systems for 5,000+ employees across European operations. I then transitioned to AI research at UW-Madison and InterDigital's Silicon Valley lab, developing novel deep learning architectures for 5G/6G wireless compression. This blend of enterprise rigor and research depth defines my engineering approach.
                     <br><br>
                     Off the keyboard, I channel my energy into biking, hiking, and suffering through Manchester United matches. I believe that high-agency in hobbies translates to high-ownership in engineering.
                     <br><br>
@@ -39,14 +39,18 @@ import Navbar from '../components/Navbar.astro';
             <div class="date">SEPT 2023 - NOV 2025</div>
             <div>
                 <div class="role-title">Machine Learning Engineer</div>
-                <span class="company">MODLEE INC</span>
+                <span class="company">MODLEE INC (TECHSTARS '23)</span>
+                <div class="company-context">Second engineering hire | Built ML infrastructure from 0 to 1</div>
                 <div class="details">
                     <ul>
-                        <li><strong>System Architect:</strong> Architected and deployed a real-time, multi-modal vector search engine (Milvus), driving a 5x expansion of the experiment catalog and enabling sub-second predictions.</li>
-                        <li><strong>Agentic AI:</strong> Spearheaded a modular data aggregator framework for agentic workflows, streamlining SQL/REST data extraction and enabling rapid analysis via LLM orchestration.</li>
-                        <li><strong>Privacy Engineering:</strong> Designed a full-stack, privacy-first OCR pipeline (EasyOCR + Local Ollama) for structuring text from complex documents without external data egress.</li>
-                        <li><strong>Infrastructure & MLOps:</strong> Enhanced team velocity by standardizing experiment tracking with MLflow and building robust API verification pipelines to ensure high data integrity.</li>
+                        <li><strong>Recommendation Systems:</strong> Architected and deployed the core recommendation engine from scratch, a real-time vector search system (Milvus) analyzing 240+ meta-features that drove 5x catalog expansion and became the product's technical foundation.</li>
+                        <li><strong>Agentic AI Frameworks:</strong> Designed and shipped a reusable agentic platform with formal tool registry and schema validation, enabling enterprise partners to deploy text-to-SQL/JSON agents and drastically cutting integration time.</li>
+                        <li><strong>Healthcare Privacy Systems:</strong> Built a production-grade, HIPAA-compliant OCR + LLM pipeline (EasyOCR + Local Ollama) for a medical client, processing sensitive documents with zero external data egress and structured information extraction.</li>
+                        <li><strong>MLOps & Data Engineering:</strong> Standardized experiment tracking with MLflow, built retroactive ingestion pipelines that backfilled 100s of experiments from W&B, and ensured data integrity across the ML platform.</li>
                     </ul>
+                    <div style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        <em>Worked across MLOps, Agentic Development, Deep Learning, and Privacy Engineering</em>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,10 +60,11 @@ import Navbar from '../components/Navbar.astro';
             <div>
                 <div class="role-title">Research & Innovation Intern</div>
                 <span class="company">INTERDIGITAL INC</span>
+                <div class="company-context">Deep learning research at Silicon Valley R&D lab</div>
                 <div class="details">
                     <ul>
-                        <li><strong>Novel Architectures:</strong> Developed custom CNN autoencoders for wireless channel state information (CSI) feedback.</li>
-                        <li><strong>Research Impact:</strong> Achieved a <strong>40% bandwidth reduction</strong> over SOTA baselines by integrating novel attention mechanisms (CBAM) into the compression pipeline.</li>
+                        <li><strong>Novel Architectures:</strong> Developed custom CNN autoencoders for wireless CSI compression, addressing a critical bottleneck in 5G/6G networks.</li>
+                        <li><strong>Research Impact:</strong> Achieved a <strong>40% bandwidth reduction</strong> over SOTA baselines by integrating Convolutional Block Attention Modules into the compression pipeline, demonstrating feasibility for next-generation wireless systems.</li>
                     </ul>
                 </div>
             </div>
@@ -69,12 +74,12 @@ import Navbar from '../components/Navbar.astro';
             <div class="date">JUL 2018 - JUL 2021</div>
             <div>
                 <div class="role-title">Software Engineer</div>
-                <span class="company">VODAFONE (_VOIS)</span>
+                <span class="company">VODAFONE INTELLIGENT SERVICES</span>
                 <div class="details">
                     <ul>
-                        <li><strong>Enterprise Scale:</strong> Led end-to-end development of FinX, a mission-critical financial API serving 5,000+ employees.</li>
-                        <li><strong>Automation:</strong> Designed a "Lazy Approval" UX integrated with Outlook, cutting average expense approval times by 50%.</li>
-                        <li><strong>Reliability:</strong> Designated Subject Matter Expert (SME) for the internal financial stack due to maintaining 99.9% uptime.</li>
+                        <li><strong>Financial Platform Development:</strong> Led end-to-end development of FinX, a mission-critical financial API serving 5,000+ employees across European operations, collaborating with DBMS, testing, and deployment teams.</li>
+                        <li><strong>Cross-Platform Integration:</strong> Integrated FinX with Outlook, JIRA, SharePoint, and Confluence, implementing automated workflows that cut expense approval times by 50%.</li>
+                        <li><strong>Data Engineering:</strong> Generated Business Intelligence extracts from 17+ database tables and optimized report generation, reducing query time by 30%.</li>
                     </ul>
                 </div>
             </div>
@@ -151,6 +156,14 @@ import Navbar from '../components/Navbar.astro';
         border: 1px solid var(--line-color);
         border-radius: 4px;
         background: rgba(255, 255, 255, 0.03);
+    }
+
+    .company-context {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
+        font-style: italic;
     }
 
     /* IMAGE STYLING */
