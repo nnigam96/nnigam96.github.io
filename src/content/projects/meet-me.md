@@ -25,6 +25,7 @@ metrics:
   - value: "5/min"
     label: "Rate Limit (SlowAPI)"
     confidence: "enforced"
+github_url: "https://github.com/nnigam96/meet-me"
 
 # RETRIEVAL HOOKS (Semantic Anchors)
 retrieval_hooks:
